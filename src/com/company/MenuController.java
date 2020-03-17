@@ -14,6 +14,7 @@ public class MenuController {
     public void handleAddButtonClick() {
         AddView addView = new AddView();
         AddController addController = new AddController();
+        addView.setAddController(addController);
         addController.setAddView(addView);
         addController.start();
     }
