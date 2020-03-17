@@ -10,4 +10,8 @@ public class MenuController {
     public void start() {
         menuView.create();
     }
+
+    public void handleAddButtonClick() {
+
+    }
 }
