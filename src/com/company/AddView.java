@@ -9,6 +9,8 @@ public class AddView {
 
     private JFrame frame;
 
+    private JLabel patientLabel;
+
     public void setAddController(AddController addController) {
         this.addController = addController;
     }
@@ -28,7 +30,16 @@ public class AddView {
         selectPatientButton.addActionListener(e -> addController.handleSelectPatientButtonClick());
         frame.add(selectPatientButton);
 
+        patientLabel = new JLabel();
+        patientLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        patientLabel.setBounds(80, 20, 300, 20);
+        frame.add(patientLabel);
+
         frame.repaint();
+    }
+
+    public void setPatientLabel(String text) {
+        patientLabel.setText(text);
     }
 
     private void createLabel(String title, int yOffset, int width) {

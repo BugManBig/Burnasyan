@@ -11,6 +11,10 @@ public class AddController {
         addView.create();
     }
 
+    public void setPatient(int id) {
+
+    }
+
     public void handleSelectPatientButtonClick() {
         PatientView patientView = new PatientView();
         PatientController patientController = new PatientController();
