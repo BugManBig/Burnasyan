@@ -2,6 +2,7 @@ package com.company;
 
 public class AddController {
     private AddView addView;
+    private Model model = ModelSingleton.getModel();
 
     public void setAddView(AddView addView) {
         this.addView = addView;
@@ -12,7 +13,7 @@ public class AddController {
     }
 
     public void setPatient(int id) {
-
+        addView.setPatientLabel(model.getPatient(id).getFio());
     }
 
     public void handleSelectPatientButtonClick() {
@@ -20,6 +21,7 @@ public class AddController {
         PatientController patientController = new PatientController();
         patientView.setPatientController(patientController);
         patientController.setPatientView(patientView);
+        patientController.setAddController(this);
         patientController.start();
     }
 }

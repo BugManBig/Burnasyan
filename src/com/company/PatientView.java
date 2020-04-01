@@ -49,6 +49,11 @@ public class PatientView {
         createButton.addActionListener(e -> patientController.handleCreateButtonClick());
         frame.add(createButton);
 
+        JButton selectButton = new JButton("Select");
+        selectButton.setBounds(330, 180, 100, 30);
+        selectButton.addActionListener(e -> patientController.handleSelectButtonClick());
+        frame.add(selectButton);
+
         table = new JTable();
         table.setFont(new Font("Arial", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(table);
@@ -56,6 +61,10 @@ public class PatientView {
         frame.add(scrollPane);
 
         frame.repaint();
+    }
+
+    public int getSelectedIndex() {
+        return table.getSelectedRow();
     }
 
     public void setTable(String[][] data) {
@@ -97,5 +106,9 @@ public class PatientView {
 
     public String getBirthday() {
         return birthdayField.getText();
+    }
+
+    public void close() {
+        frame.dispose();
     }
 }

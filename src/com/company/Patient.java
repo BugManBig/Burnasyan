@@ -18,6 +18,10 @@ public class Patient {
         this.birthday = parseDate(birthday);
     }
 
+    public int getId() {
+        return id;
+    }
+
     private LocalDateTime parseDate(String date) {
         return LocalDateTime.of(
                 getNumberFromDateString(2, date),

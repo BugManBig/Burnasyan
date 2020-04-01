@@ -9,8 +9,12 @@ import java.util.List;
 public class PatientController {
     private PatientView patientView;
     private Model model = ModelSingleton.getModel();
+    private AddController addController;
+    private List<Patient> foundedList;
 
-    private List<Patient> patients = new ArrayList<>();
+    public void setAddController(AddController addController) {
+        this.addController = addController;
+    }
 
     public void setPatientView(PatientView patientView) {
         this.patientView = patientView;
@@ -34,11 +38,12 @@ public class PatientController {
             e.printStackTrace();
         }
         model.readPatients();
-        handleButtonRelease();
+        addController.setPatient(model.getNextId() - 1);
+        patientView.close();
     }
 
     public void handleButtonRelease() {
-        List<Patient> foundedList = model.getFilteredPatients(
+        foundedList = model.getFilteredPatients(
                 patientView.getName(),
                 patientView.getSurname(),
                 patientView.getPatronymic(),
@@ -49,5 +54,10 @@ public class PatientController {
             data[i][1] = foundedList.get(i).getBirthdayString();
         }
         patientView.setTable(data);
+    }
+
+    public void handleSelectButtonClick() {
+        addController.setPatient(foundedList.get(patientView.getSelectedIndex()).getId());
+        patientView.close();
     }
 }

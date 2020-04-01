@@ -15,6 +15,15 @@ public class Model {
         return nextId;
     }
 
+    public Patient getPatient(int id) {
+        for (int i = 0; i < patients.size(); i++) {
+            if (patients.get(i).getId() == id) {
+                return patients.get(i);
+            }
+        }
+        return null;
+    }
+
     public void readPatients() {
         File file = new File("D:\\Soft\\IdeaTest\\Burnasyan\\Patients");
         File[] files = file.listFiles();

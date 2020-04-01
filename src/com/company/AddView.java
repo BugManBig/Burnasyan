@@ -18,7 +18,7 @@ public class AddView {
     public void create() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 900);
+        frame.setSize(600, 200);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);
