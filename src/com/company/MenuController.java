@@ -17,5 +17,6 @@ public class MenuController {
         addView.setAddController(addController);
         addController.setAddView(addView);
         addController.start();
+        menuView.close();
     }
 }

@@ -1,7 +1,6 @@
 package com.company;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import java.awt.*;
 
 public class AddView {
@@ -23,12 +22,20 @@ public class AddView {
         frame.setLayout(null);
         frame.setVisible(true);
 
-        createLabel("Patient:", 20, 60);
+        JLabel label = new JLabel("Patient:");
+        label.setBounds(20, 20, 60, 20);
+        label.setFont(new Font("Arial", Font.PLAIN, 16));
+        frame.add(label);
 
         JButton selectPatientButton = new JButton("Select");
         selectPatientButton.setBounds(20, 50, 100, 30);
         selectPatientButton.addActionListener(e -> addController.handleSelectPatientButtonClick());
         frame.add(selectPatientButton);
+
+        JButton nextButton = new JButton("Next");
+        nextButton.setBounds(450, 100, 100, 30);
+        nextButton.addActionListener(e -> addController.handleNextButtonClick());
+        frame.add(nextButton);
 
         patientLabel = new JLabel();
         patientLabel.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -42,10 +49,7 @@ public class AddView {
         patientLabel.setText(text);
     }
 
-    private void createLabel(String title, int yOffset, int width) {
-        JLabel label = new JLabel(title);
-        label.setBounds(20, yOffset, width, 20);
-        label.setFont(new Font("Arial", Font.PLAIN, 16));
-        frame.add(label);
+    public void close() {
+        frame.dispose();
     }
 }

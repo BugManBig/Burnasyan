@@ -3,19 +3,26 @@ package com.company;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Patient {
+public class Person {
     private int id;
     private String surname;
     private String name;
     private String patronymic;
     private LocalDateTime birthday;
 
-    public Patient(int id, String surname, String name, String patronymic, String birthday) {
+    public Person(int id, String surname, String name, String patronymic, String birthday) {
         this.id = id;
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.birthday = parseDate(birthday);
+    }
+
+    public Person(int id, String surname, String name, String patronymic) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
     }
 
     public int getId() {

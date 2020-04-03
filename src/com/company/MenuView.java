@@ -4,13 +4,14 @@ import javax.swing.*;
 
 public class MenuView {
     private MenuController menuController;
+    private JFrame frame;
 
     public void setMenuController(MenuController menuController) {
         this.menuController = menuController;
     }
 
     public void create() {
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(300, 300);
         frame.setLocationRelativeTo(null);
@@ -23,5 +24,9 @@ public class MenuView {
         frame.add(button);
 
         frame.repaint();
+    }
+
+    public void close() {
+        frame.dispose();
     }
 }

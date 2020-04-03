@@ -10,7 +10,7 @@ public class PatientController {
     private PatientView patientView;
     private Model model = ModelSingleton.getModel();
     private AddController addController;
-    private List<Patient> foundedList;
+    private List<Person> foundedList;
 
     public void setAddController(AddController addController) {
         this.addController = addController;
@@ -33,12 +33,12 @@ public class PatientController {
         strings.add(patientView.getPatronymic());
         strings.add(patientView.getBirthday());
         try {
-            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Patients\\" + model.getNextId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
+            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Patients\\" + model.getNextPatientId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
         } catch (IOException e) {
             e.printStackTrace();
         }
         model.readPatients();
-        addController.setPatient(model.getNextId() - 1);
+        addController.setPatient(model.getNextPatientId() - 1);
         patientView.close();
     }
 

@@ -24,4 +24,13 @@ public class AddController {
         patientController.setAddController(this);
         patientController.start();
     }
+
+    public void handleNextButtonClick() {
+        DoctorScreenView doctorScreenView = new DoctorScreenView();
+        DoctorScreenController doctorScreenController = new DoctorScreenController();
+        doctorScreenView.setDoctorScreenController(doctorScreenController);
+        doctorScreenController.setDoctorScreenView(doctorScreenView);
+        doctorScreenController.start();
+        addView.close();
+    }
 }
