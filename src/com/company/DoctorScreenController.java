@@ -13,7 +13,7 @@ public class DoctorScreenController {
         DoctorSelectorController doctorSelectorController = new DoctorSelectorController();
         doctorSelectorView.setDoctorSelectorController(doctorSelectorController);
         doctorSelectorController.setDoctorSelectorView(doctorSelectorView);
-        doctorSelectorController.setDoctorScreenController(this);
+        //doctorSelectorController.setAddController(this);
         doctorSelectorController.start();
     }
 

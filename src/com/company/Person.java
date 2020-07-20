@@ -9,20 +9,15 @@ public class Person {
     private String name;
     private String patronymic;
     private LocalDateTime birthday;
+    private Sex sex;
 
-    public Person(int id, String surname, String name, String patronymic, String birthday) {
+    public Person(int id, String surname, String name, String patronymic, String birthday, Sex sex) {
         this.id = id;
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.birthday = parseDate(birthday);
-    }
-
-    public Person(int id, String surname, String name, String patronymic) {
-        this.id = id;
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
+        this.sex = sex;
     }
 
     public int getId() {
@@ -67,6 +62,10 @@ public class Person {
 
     public String getBirthdayString() {
         return birthday.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    }
+
+    public Sex getSex() {
+        return sex;
     }
 
     @Override

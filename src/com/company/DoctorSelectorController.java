@@ -11,10 +11,10 @@ public class DoctorSelectorController {
     private Model model = ModelSingleton.getModel();
     private List<Person> doctors;
     private DoctorSelectorView doctorSelectorView;
-    private DoctorScreenController doctorScreenController;
+    private AddController addController;
 
-    public void setDoctorScreenController(DoctorScreenController doctorScreenController) {
-        this.doctorScreenController = doctorScreenController;
+    public void setAddController(AddController addController) {
+        this.addController = addController;
     }
 
     public void setDoctorSelectorView(DoctorSelectorView doctorSelectorView) {
@@ -47,12 +47,12 @@ public class DoctorSelectorController {
             e.printStackTrace();
         }
         model.readDoctors();
-        doctorScreenController.setDoctor(model.getNextDoctorId() - 1);
+        addController.setDoctor(model.getNextDoctorId() - 1);
         doctorSelectorView.close();
     }
 
     public void handleSelectButtonClick() {
-        doctorScreenController.setDoctor(doctors.get(doctorSelectorView.getSelectedIndex()).getId());
+        addController.setDoctor(doctors.get(doctorSelectorView.getSelectedIndex()).getId());
         doctorSelectorView.close();
     }
 }

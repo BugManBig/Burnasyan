@@ -1,5 +1,8 @@
 package com.company;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AddController {
     private AddView addView;
     private Model model = ModelSingleton.getModel();
@@ -10,6 +13,8 @@ public class AddController {
 
     public void start() {
         addView.create();
+        LocalDateTime now = LocalDateTime.now();
+        addView.setDateField(now.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
     }
 
     public void setPatient(int id) {
@@ -17,12 +22,25 @@ public class AddController {
     }
 
     public void handleSelectPatientButtonClick() {
-        PatientView patientView = new PatientView();
-        PatientController patientController = new PatientController();
-        patientView.setPatientController(patientController);
-        patientController.setPatientView(patientView);
-        patientController.setAddController(this);
-        patientController.start();
+        PatientSelectorView patientSelectorView = new PatientSelectorView();
+        PatientSelectorController patientSelectorController = new PatientSelectorController();
+        patientSelectorView.setPatientSelectorController(patientSelectorController);
+        patientSelectorController.setPatientSelectorView(patientSelectorView);
+        patientSelectorController.setAddController(this);
+        patientSelectorController.start();
+    }
+
+    public void handleSelectDoctorButtonClick() {
+        DoctorSelectorView doctorSelectorView = new DoctorSelectorView();
+        DoctorSelectorController doctorSelectorController = new DoctorSelectorController();
+        doctorSelectorView.setDoctorSelectorController(doctorSelectorController);
+        doctorSelectorController.setDoctorSelectorView(doctorSelectorView);
+        doctorSelectorController.setAddController(this);
+        doctorSelectorController.start();
+    }
+
+    public void setDoctor(int id) {
+        addView.setDoctorNameLabel(model.getDoctor(id).getFio());
     }
 
     public void handleNextButtonClick() {

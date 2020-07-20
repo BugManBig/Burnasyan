@@ -5,19 +5,22 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
-public class PatientView {
-    private PatientController patientController;
+public class PatientSelectorView {
+    private PatientSelectorController patientSelectorController;
 
     private JTextField nameField;
     private JTextField surnameField;
     private JTextField patronymicField;
     private JTextField birthdayField;
+    private JComboBox<String> sexComboBox;
     private JFrame frame;
     private JTable table;
+    private String[] sexTypes = {"---", "Male", "Female"};
 
-    public void setPatientController(PatientController patientController) {
-        this.patientController = patientController;
+    public void setPatientSelectorController(PatientSelectorController patientSelectorController) {
+        this.patientSelectorController = patientSelectorController;
     }
 
     public void create() {
@@ -37,21 +40,25 @@ public class PatientView {
         birthdayField = createTextfield(140);
         frame.add(birthdayField);
 
-
+        sexComboBox = new JComboBox<>(sexTypes);
+        sexComboBox.setBounds(120, 180, 100, 30);
+        sexComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+        frame.add(sexComboBox);
 
         createLabel("Surname:", 20);
         createLabel("Name:", 60);
         createLabel("Patronymic:", 100);
         createLabel("Birthday:", 140);
+        createLabel("Sex:", 180);
 
         JButton createButton = new JButton("Create");
-        createButton.setBounds(120, 180, 100, 30);
-        createButton.addActionListener(e -> patientController.handleCreateButtonClick());
+        createButton.setBounds(120, 220, 100, 30);
+        createButton.addActionListener(e -> patientSelectorController.handleCreateButtonClick());
         frame.add(createButton);
 
         JButton selectButton = new JButton("Select");
         selectButton.setBounds(330, 180, 100, 30);
-        selectButton.addActionListener(e -> patientController.handleSelectButtonClick());
+        selectButton.addActionListener(e -> patientSelectorController.handleSelectButtonClick());
         frame.add(selectButton);
 
         table = new JTable();
@@ -79,7 +86,7 @@ public class PatientView {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
-                patientController.handleButtonRelease();
+                patientSelectorController.handleButtonRelease();
             }
         });
         return textField;
@@ -106,6 +113,22 @@ public class PatientView {
 
     public String getBirthday() {
         return birthdayField.getText();
+    }
+
+    public Sex getSex() {
+        return Sex.values()[sexComboBox.getSelectedIndex()];
+    }
+
+    public void setSex(Sex sex) {
+        if (sex == Sex.NONE) {
+            sexComboBox.setSelectedIndex(0);
+        }
+        if (sex == Sex.MALE) {
+            sexComboBox.setSelectedIndex(1);
+        }
+        if (sex == Sex.FEMALE) {
+            sexComboBox.setSelectedIndex(2);
+        }
     }
 
     public void close() {

@@ -25,6 +25,15 @@ public class Model {
         return nextDoctorId;
     }
 
+    public Sex getPatientSex(String name) {
+        for (Person person : patients) {
+            if (person.getName().equals(name)) {
+                return person.getSex();
+            }
+        }
+        return Sex.NONE;
+    }
+
     public Person getPatient(int id) {
         for (int i = 0; i < patients.size(); i++) {
             if (patients.get(i).getId() == id) {
@@ -104,11 +113,8 @@ public class Model {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (lines.size() < 4) {
-            lines.add("01.01.1970");
-        }
         String fileName = file.getName();
         int id = Integer.parseInt(fileName.substring(0, fileName.lastIndexOf(".")));
-        return new Person(id, lines.get(0), lines.get(1), lines.get(2), lines.get(3));
+        return new Person(id, lines.get(0), lines.get(1), lines.get(2), lines.get(3), Sex.valueOf(lines.get(4)));
     }
 }
