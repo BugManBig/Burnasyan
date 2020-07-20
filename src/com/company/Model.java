@@ -115,6 +115,9 @@ public class Model {
         }
         String fileName = file.getName();
         int id = Integer.parseInt(fileName.substring(0, fileName.lastIndexOf(".")));
+        if (lines.size() < 5) {
+            return new Person(id, lines.get(0), lines.get(1), lines.get(2));
+        }
         return new Person(id, lines.get(0), lines.get(1), lines.get(2), lines.get(3), Sex.valueOf(lines.get(4)));
     }
 }

@@ -20,6 +20,13 @@ public class Person {
         this.sex = sex;
     }
 
+    public Person(int id, String surname, String name, String patronymic) {
+        this.id = id;
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+    }
+
     public int getId() {
         return id;
     }
