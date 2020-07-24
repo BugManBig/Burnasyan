@@ -1,6 +1,5 @@
 package com.company;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -94,7 +93,7 @@ public class Model {
         nextDoctorId++;
     }
 
-    public List<Person> getFilteredPatients(String name, String surname, String patronymic, String birthday) {
+    public List<Person> getFilteredPatients(String name, String surname, String patronymic) {
         name = name.toLowerCase();
         surname = surname.toLowerCase();
         patronymic = patronymic.toLowerCase();
@@ -102,8 +101,7 @@ public class Model {
         for (int i = 0; i < patients.size(); i++) {
             if (patients.get(i).getSurname().toLowerCase().startsWith(surname)
                     && patients.get(i).getName().toLowerCase().startsWith(name)
-                    && patients.get(i).getPatronymic().toLowerCase().startsWith(patronymic)
-                    && patients.get(i).getBirthdayString().startsWith(birthday)) {
+                    && patients.get(i).getPatronymic().toLowerCase().startsWith(patronymic)) {
                 filteredList.add(patients.get(i));
             }
         }

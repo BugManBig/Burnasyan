@@ -1,6 +1,7 @@
 package com.company;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -39,7 +40,8 @@ public class PatientSelectorController {
             e.printStackTrace();
         }
         model.readPatients();
-        addController.setPatient(model.getNextPatientId() - 1);
+        model.getTask().patientId = model.getNextPatientId() - 1;
+        addController.updatePatientField();
         patientSelectorView.close();
     }
 
@@ -47,8 +49,7 @@ public class PatientSelectorController {
         foundedList = model.getFilteredPatients(
                 patientSelectorView.getName(),
                 patientSelectorView.getSurname(),
-                patientSelectorView.getPatronymic(),
-                patientSelectorView.getBirthday());
+                patientSelectorView.getPatronymic());
         String[][] data = new String[foundedList.size()][2];
         for (int i = 0; i < data.length; i++) {
             data[i][0] = foundedList.get(i).getFio();
@@ -59,7 +60,8 @@ public class PatientSelectorController {
     }
 
     public void handleSelectButtonClick() {
-        addController.setPatient(foundedList.get(patientSelectorView.getSelectedIndex()).getId());
+        model.getTask().patientId = foundedList.get(patientSelectorView.getSelectedIndex()).getId();
+        addController.updatePatientField();
         patientSelectorView.close();
     }
 }

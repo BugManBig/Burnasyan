@@ -1,6 +1,6 @@
 package com.company;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Person {
@@ -8,7 +8,7 @@ public class Person {
     private String surname;
     private String name;
     private String patronymic;
-    private LocalDateTime birthday;
+    private LocalDate birthday;
     private Sex sex;
 
     public Person(int id, String surname, String name, String patronymic, String birthday, Sex sex) {
@@ -31,12 +31,11 @@ public class Person {
         return id;
     }
 
-    private LocalDateTime parseDate(String date) {
-        return LocalDateTime.of(
+    private LocalDate parseDate(String date) {
+        return LocalDate.of(
                 getNumberFromDateString(2, date),
                 getNumberFromDateString(1, date),
-                getNumberFromDateString(0, date),
-                0, 0);
+                getNumberFromDateString(0, date));
     }
 
     private int getNumberFromDateString(int id, String date) {
@@ -65,6 +64,10 @@ public class Person {
 
     public String getFio() {
         return surname + " " + name + " " + patronymic;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
     }
 
     public String getBirthdayString() {

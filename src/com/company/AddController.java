@@ -1,6 +1,7 @@
 package com.company;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class AddController {
@@ -13,7 +14,7 @@ public class AddController {
 
     public void start() {
         addView.create();
-        LocalDateTime now = LocalDateTime.now();
+        LocalDate now = LocalDate.now();
         addView.setDateField(now.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         model.createTask();
     }
@@ -41,18 +42,26 @@ public class AddController {
         addView.setDoctorNameLabel(model.getDoctor(id).getFio());
     }
 
-    public void setPatient(int id) {
-        model.getTask().patientId = id;
-        addView.setPatientLabel(model.getPatient(id).getFio());
+    public void updatePatientField() {
+        Person patient = model.getPatient(model.getTask().patientId);
+        int age = Period.between(patient.getBirthday(), addView.getDate()).getYears();
+        addView.setPatientFioLabel(patient.getFio() + " (" + age + " years old)");
     }
 
     public void handleNextButtonClick() {
-        model.getTask().date = addView.getDate();
+        model.getTask().date = addView.getDateString();
         SizesView sizesView = new SizesView();
         SizesController sizesController = new SizesController();
         sizesView.setSizesController(sizesController);
         sizesController.setSizesView(sizesView);
         sizesController.start();
         addView.close();
+    }
+
+    public void handleKeyRelease() {
+        if (addView.getDate() == null) {
+            return;
+        }
+        updatePatientField();
     }
 }

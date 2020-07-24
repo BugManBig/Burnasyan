@@ -2,14 +2,19 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class AddView {
     private AddController addController;
 
     private JFrame frame;
 
-    private JLabel patientNameLabel;
+    private JLabel patientFioLabel;
     private JLabel doctorNameLabel;
     private JFormattedTextField dateField;
 
@@ -47,10 +52,10 @@ public class AddView {
         patientTitleLabel.setFont(Params.FONT);
         frame.add(patientTitleLabel);
 
-        patientNameLabel = new JLabel();
-        patientNameLabel.setFont(Params.FONT);
-        patientNameLabel.setBounds(80, 120, 300, 20);
-        frame.add(patientNameLabel);
+        patientFioLabel = new JLabel();
+        patientFioLabel.setFont(Params.FONT);
+        patientFioLabel.setBounds(80, 120, 400, 20);
+        frame.add(patientFioLabel);
 
         JButton selectPatientButton = new JButton("Select");
         selectPatientButton.setBounds(20, 150, 100, 30);
@@ -70,6 +75,13 @@ public class AddView {
         }
         dateField.setBounds(70, 220, 100, 30);
         dateField.setFont(Params.FONT);
+        dateField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                addController.handleKeyRelease();
+            }
+        });
         frame.add(dateField);
 
         JButton nextButton = new JButton("Next");
@@ -84,12 +96,20 @@ public class AddView {
         dateField.setText(string);
     }
 
-    public String getDate() {
+    public String getDateString() {
         return dateField.getText();
     }
 
-    public void setPatientLabel(String text) {
-        patientNameLabel.setText(text);
+    public LocalDate getDate() {
+        try {
+            return LocalDate.parse(dateField.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    public void setPatientFioLabel(String text) {
+        patientFioLabel.setText(text);
     }
 
     public void setDoctorNameLabel(String text) {

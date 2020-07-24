@@ -2,9 +2,10 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 
 public class PatientSelectorView {
     private PatientSelectorController patientSelectorController;
@@ -36,7 +37,13 @@ public class PatientSelectorView {
         frame.add(nameField);
         patronymicField = createTextfield(100);
         frame.add(patronymicField);
-        birthdayField = createTextfield(140);
+        try {
+            birthdayField = new JFormattedTextField(new MaskFormatter("##.##.####"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        birthdayField.setBounds(120, 140, 200, 30);
+        birthdayField.setFont(Params.FONT);
         frame.add(birthdayField);
 
         sexComboBox = new JComboBox<>(sexTypes);
