@@ -14,5 +14,8 @@ public class SizesController {
 
     public void handleNextButtonClick() {
         model.getTask().sizes = sizesView.getSizes();
+        DiagnosisView diagnosisView = new DiagnosisView();
+        diagnosisView.create();
+        sizesView.close();
     }
 }

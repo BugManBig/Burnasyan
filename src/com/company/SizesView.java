@@ -40,4 +40,8 @@ public class SizesView {
     public String getSizes() {
         return sizesField.getText();
     }
+
+    public void close() {
+        frame.dispose();
+    }
 }

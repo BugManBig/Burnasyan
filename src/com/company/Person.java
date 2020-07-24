@@ -32,22 +32,7 @@ public class Person {
     }
 
     private LocalDate parseDate(String date) {
-        return LocalDate.of(
-                getNumberFromDateString(2, date),
-                getNumberFromDateString(1, date),
-                getNumberFromDateString(0, date));
-    }
-
-    private int getNumberFromDateString(int id, String date) {
-        int start = -1;
-        for (int count = 0; count < id; count++) {
-            start = date.indexOf(".", start + 1);
-        }
-        int end = date.indexOf(".", start + 1);
-        if (end == -1) {
-            end = date.length();
-        }
-        return Integer.parseInt(date.substring(start + 1, end));
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     public String getName() {
