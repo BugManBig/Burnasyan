@@ -2,7 +2,6 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
-import java.awt.*;
 import java.text.ParseException;
 
 public class AddView {
@@ -29,11 +28,11 @@ public class AddView {
         //Doctor
         JLabel doctorTitleLabel = new JLabel("Doctor:");
         doctorTitleLabel.setBounds(20, 20, 60, 20);
-        doctorTitleLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        doctorTitleLabel.setFont(Params.FONT);
         frame.add(doctorTitleLabel);
 
         doctorNameLabel = new JLabel();
-        doctorNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        doctorNameLabel.setFont(Params.FONT);
         doctorNameLabel.setBounds(80, 20, 300, 20);
         frame.add(doctorNameLabel);
 
@@ -45,11 +44,11 @@ public class AddView {
         //Patient
         JLabel patientTitleLabel = new JLabel("Patient:");
         patientTitleLabel.setBounds(20, 120, 60, 20);
-        patientTitleLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        patientTitleLabel.setFont(Params.FONT);
         frame.add(patientTitleLabel);
 
         patientNameLabel = new JLabel();
-        patientNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        patientNameLabel.setFont(Params.FONT);
         patientNameLabel.setBounds(80, 120, 300, 20);
         frame.add(patientNameLabel);
 
@@ -61,7 +60,7 @@ public class AddView {
         //Date
         JLabel dateLabel = new JLabel("Date:");
         dateLabel.setBounds(20, 220, 50, 30);
-        dateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        dateLabel.setFont(Params.FONT);
         frame.add(dateLabel);
 
         try {
@@ -70,7 +69,7 @@ public class AddView {
             e.printStackTrace();
         }
         dateField.setBounds(70, 220, 100, 30);
-        dateField.setFont(new Font("Arial", Font.PLAIN, 16));
+        dateField.setFont(Params.FONT);
         frame.add(dateField);
 
         JButton nextButton = new JButton("Next");
@@ -83,6 +82,10 @@ public class AddView {
 
     public void setDateField(String string) {
         dateField.setText(string);
+    }
+
+    public String getDate() {
+        return dateField.getText();
     }
 
     public void setPatientLabel(String text) {

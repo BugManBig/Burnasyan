@@ -1,5 +1,6 @@
 package com.company;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -12,6 +13,15 @@ public class Model {
     private List<Person> doctors;
     private int nextPatientId;
     private int nextDoctorId;
+    private Task task;
+
+    public void createTask() {
+        task = new Task();
+    }
+
+    public Task getTask() {
+        return task;
+    }
 
     public List<Person> getDoctors() {
         return doctors;

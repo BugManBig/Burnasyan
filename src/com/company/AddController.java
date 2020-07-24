@@ -15,19 +15,7 @@ public class AddController {
         addView.create();
         LocalDateTime now = LocalDateTime.now();
         addView.setDateField(now.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-    }
-
-    public void setPatient(int id) {
-        addView.setPatientLabel(model.getPatient(id).getFio());
-    }
-
-    public void handleSelectPatientButtonClick() {
-        PatientSelectorView patientSelectorView = new PatientSelectorView();
-        PatientSelectorController patientSelectorController = new PatientSelectorController();
-        patientSelectorView.setPatientSelectorController(patientSelectorController);
-        patientSelectorController.setPatientSelectorView(patientSelectorView);
-        patientSelectorController.setAddController(this);
-        patientSelectorController.start();
+        model.createTask();
     }
 
     public void handleSelectDoctorButtonClick() {
@@ -39,16 +27,32 @@ public class AddController {
         doctorSelectorController.start();
     }
 
+    public void handleSelectPatientButtonClick() {
+        PatientSelectorView patientSelectorView = new PatientSelectorView();
+        PatientSelectorController patientSelectorController = new PatientSelectorController();
+        patientSelectorView.setPatientSelectorController(patientSelectorController);
+        patientSelectorController.setPatientSelectorView(patientSelectorView);
+        patientSelectorController.setAddController(this);
+        patientSelectorController.start();
+    }
+
     public void setDoctor(int id) {
+        model.getTask().doctorId = id;
         addView.setDoctorNameLabel(model.getDoctor(id).getFio());
     }
 
+    public void setPatient(int id) {
+        model.getTask().patientId = id;
+        addView.setPatientLabel(model.getPatient(id).getFio());
+    }
+
     public void handleNextButtonClick() {
-        DoctorScreenView doctorScreenView = new DoctorScreenView();
-        DoctorScreenController doctorScreenController = new DoctorScreenController();
-        doctorScreenView.setDoctorScreenController(doctorScreenController);
-        doctorScreenController.setDoctorScreenView(doctorScreenView);
-        doctorScreenController.start();
+        model.getTask().date = addView.getDate();
+        SizesView sizesView = new SizesView();
+        SizesController sizesController = new SizesController();
+        sizesView.setSizesController(sizesController);
+        sizesController.setSizesView(sizesView);
+        sizesController.start();
         addView.close();
     }
 }

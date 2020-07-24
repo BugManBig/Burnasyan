@@ -5,7 +5,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
 
 public class PatientSelectorView {
     private PatientSelectorController patientSelectorController;
@@ -42,7 +41,7 @@ public class PatientSelectorView {
 
         sexComboBox = new JComboBox<>(sexTypes);
         sexComboBox.setBounds(120, 180, 100, 30);
-        sexComboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+        sexComboBox.setFont(Params.FONT);
         frame.add(sexComboBox);
 
         createLabel("Surname:", 20);
@@ -62,7 +61,7 @@ public class PatientSelectorView {
         frame.add(selectButton);
 
         table = new JTable();
-        table.setFont(new Font("Arial", Font.PLAIN, 16));
+        table.setFont(Params.FONT);
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(330, 20, 400, 150);
         frame.add(scrollPane);
@@ -81,7 +80,7 @@ public class PatientSelectorView {
     private JTextField createTextfield(int yOffset) {
         JTextField textField = new JTextField();
         textField.setBounds(120, yOffset, 200, 30);
-        textField.setFont(new Font("Arial", Font.PLAIN, 16));
+        textField.setFont(Params.FONT);
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -95,7 +94,7 @@ public class PatientSelectorView {
     private void createLabel(String text, int yOffset) {
         JLabel label = new JLabel(text);
         label.setBounds(20, yOffset, 100, 30);
-        label.setFont(new Font("Arial", Font.PLAIN, 16));
+        label.setFont(Params.FONT);
         frame.add(label);
     }
 

@@ -1,9 +1,6 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class DoctorSelectorView {
     private DoctorSelectorController doctorSelectorController;
@@ -48,7 +45,7 @@ public class DoctorSelectorView {
         frame.add(selectButton);
 
         list = new JList<>();
-        list.setFont(new Font("Arial", Font.PLAIN, 16));
+        list.setFont(Params.FONT);
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(330, 20, 400, 150);
         frame.add(scrollPane);
@@ -67,14 +64,14 @@ public class DoctorSelectorView {
     private JTextField createTextfield(int yOffset) {
         JTextField textField = new JTextField();
         textField.setBounds(120, yOffset, 200, 30);
-        textField.setFont(new Font("Arial", Font.PLAIN, 16));
+        textField.setFont(Params.FONT);
         return textField;
     }
 
     private void createLabel(String text, int yOffset) {
         JLabel label = new JLabel(text);
         label.setBounds(20, yOffset, 100, 30);
-        label.setFont(new Font("Arial", Font.PLAIN, 16));
+        label.setFont(Params.FONT);
         frame.add(label);
     }
 
