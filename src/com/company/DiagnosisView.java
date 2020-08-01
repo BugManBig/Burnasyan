@@ -5,6 +5,11 @@ import javax.swing.*;
 public class DiagnosisView {
     private JFrame frame;
     private JLabel diagnosisLabel;
+    private DiagnosisController diagnosisController;
+
+    public void setDiagnosisController(DiagnosisController diagnosisController) {
+        this.diagnosisController = diagnosisController;
+    }
 
     public void create() {
         frame = new JFrame();
@@ -24,11 +29,28 @@ public class DiagnosisView {
         diagnosisLabel.setFont(Params.FONT);
         frame.add(diagnosisLabel);
 
+        JButton selectButton = new JButton("Select");
+        selectButton.setBounds(20, 60, 100, 30);
+        selectButton.addActionListener(e -> diagnosisController.handleSelectButtonClick());
+        frame.add(selectButton);
+
         JButton nextButton = new JButton("Next");
-        //nextButton.addActionListener(e -> sizesController.handleNextButtonClick());
+        nextButton.addActionListener(e -> diagnosisController.handleNextButtonClick());
         nextButton.setBounds(450, 300, 100, 30);
         frame.add(nextButton);
 
         frame.repaint();
+    }
+
+    public void setDiagnosisLabel(String text) {
+        diagnosisLabel.setText(text);
+    }
+
+    public String getDiagnosis() {
+        return diagnosisLabel.getText();
+    }
+
+    public void close() {
+        frame.dispose();
     }
 }

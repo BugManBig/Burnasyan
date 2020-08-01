@@ -5,4 +5,5 @@ public class Task {
     public int patientId;
     public String date;
     public String sizes;
+    public String diagnosis;
 }

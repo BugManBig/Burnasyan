@@ -4,12 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
     private List<Person> patients;
     private List<Person> doctors;
+    private List<String> diagnosis;
     private int nextPatientId;
     private int nextDoctorId;
     private Task task;
@@ -24,6 +27,10 @@ public class Model {
 
     public List<Person> getDoctors() {
         return doctors;
+    }
+
+    public List<String> getDiagnosis() {
+        return diagnosis;
     }
 
     public int getNextPatientId() {
@@ -91,6 +98,26 @@ public class Model {
             }
         }
         nextDoctorId++;
+    }
+
+    public void readDiagnosis() {
+        File file = new File("D:\\Soft\\IdeaTest\\Burnasyan\\Diagnosis.txt");
+        try {
+            diagnosis = Files.readAllLines(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addDiagnosis(String diagnosis) {
+        List<String> diagnoses = new ArrayList<>();
+        diagnoses.add(diagnosis);
+        try {
+            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Diagnosis.txt").toPath(),
+                    diagnoses, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Person> getFilteredPatients(String name, String surname, String patronymic) {
