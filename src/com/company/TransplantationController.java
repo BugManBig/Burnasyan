@@ -13,6 +13,7 @@ public class TransplantationController {
 
     public void start() {
         transplantationView.create();
+        handleComboBoxChange();
     }
 
     public void handleKeyRelease() {
@@ -48,6 +49,10 @@ public class TransplantationController {
             ans = many;
         }
         return number + " " + ans + " ";
+    }
+
+    public void handleComboBoxChange() {
+        transplantationView.setFieldsEnabled(transplantationView.getTypeString().equals("Трупный"));
     }
 
     public void handleNextButtonClick() {
