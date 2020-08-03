@@ -25,12 +25,12 @@ public class DiagnosisSelectorView {
         frame.add(list);
 
         JButton selectButton = new JButton("Select");
-        selectButton.setBounds(10, 320, 100, 30);
+        selectButton.setBounds(210, 320, 100, 30);
         selectButton.addActionListener(e -> diagnosisSelectorController.handleSelectButtonClick());
         frame.add(selectButton);
 
         JButton addButton = new JButton("Add");
-        addButton.setBounds(120, 320, 100, 30);
+        addButton.setBounds(10, 320, 100, 30);
         addButton.addActionListener(e -> diagnosisSelectorController.handleAddButtonClick());
         frame.add(addButton);
     }

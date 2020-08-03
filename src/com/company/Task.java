@@ -6,4 +6,6 @@ public class Task {
     public String date;
     public String sizes;
     public String diagnosis;
+    public String transplantationType;
+    public String transplantationDate;
 }

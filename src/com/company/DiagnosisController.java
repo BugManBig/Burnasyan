@@ -27,7 +27,11 @@ public class DiagnosisController {
 
     public void handleNextButtonClick() {
         model.getTask().diagnosis = diagnosisView.getDiagnosis();
-
+        TransplantationView transplantationView = new TransplantationView();
+        TransplantationController transplantationController = new TransplantationController();
+        transplantationController.setTransplantationView(transplantationView);
+        transplantationView.setTransplantationController(transplantationController);
+        transplantationController.start();
         diagnosisView.close();
     }
 }
