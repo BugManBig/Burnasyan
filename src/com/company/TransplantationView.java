@@ -19,6 +19,8 @@ public class TransplantationView {
     private JTextField hdField;
     private JLabel ldLabel;
     private JLabel hdLabel;
+    private JComboBox<String> echoComboBox;
+    private JTextArea commentArea;
 
     public void setTransplantationController(TransplantationController transplantationController) {
         this.transplantationController = transplantationController;
@@ -27,7 +29,7 @@ public class TransplantationView {
     public void create() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(600, 500);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
 
@@ -43,8 +45,8 @@ public class TransplantationView {
         hdLabel.setBounds(20, 230, 30, 30);
         hdLabel.setFont(Params.FONT);
         frame.add(hdLabel);
-        createLabel("ЛД:", 20, 190);
-        createLabel("ХД:", 20, 230);
+        createLabel("Эхогенность:", 20, 270);
+        createLabel("Доп. образования:", 20, 310);
 
         typeComboBox = new JComboBox<>(new String[]{"Родственный", "Трупный"});
         typeComboBox.setBounds(220, 70, 150, 30);
@@ -93,9 +95,28 @@ public class TransplantationView {
         hdField.setBounds(70, 230, 100, 30);
         frame.add(hdField);
 
+        echoComboBox = new JComboBox<>(new String[]{
+                "Умеренно гипоэхогенная",
+                "Выраженно гипоэхогенная",
+                "Изоэхогенная",
+                "Умеренно гиперэхогенная",
+                "Выраженно гиперэхогенная"
+        });
+        echoComboBox.setFont(Params.FONT);
+        echoComboBox.setSelectedIndex(2);
+        echoComboBox.setBounds(220, 270, 250, 30);
+        frame.add(echoComboBox);
+
+        commentArea = new JTextArea();
+        commentArea.setFont(Params.FONT);
+        commentArea.setBounds(220, 320, 250, 75);
+        commentArea.setLineWrap(true);
+        commentArea.setWrapStyleWord(true);
+        frame.add(commentArea);
+
         JButton nextButton = new JButton("Next");
         nextButton.addActionListener(e -> transplantationController.handleNextButtonClick());
-        nextButton.setBounds(450, 300, 100, 30);
+        nextButton.setBounds(370, 410, 100, 30);
         frame.add(nextButton);
 
         frame.setVisible(true);
@@ -130,6 +151,26 @@ public class TransplantationView {
 
     public String getTypeString() {
         return (String) typeComboBox.getSelectedItem();
+    }
+
+    public String getRdString() {
+        return rdField.getText();
+    }
+
+    public String getLdString() {
+        return ldField.getText();
+    }
+
+    public String getHdString() {
+        return hdField.getText();
+    }
+
+    public String getEchoType() {
+        return (String) echoComboBox.getSelectedItem();
+    }
+
+    public String getComment() {
+        return commentArea.getText();
     }
 
     public void setFieldsEnabled(boolean b) {

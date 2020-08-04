@@ -56,8 +56,14 @@ public class TransplantationController {
     }
 
     public void handleNextButtonClick() {
-        model.getTask().transplantationType = transplantationView.getTypeString();
-        model.getTask().transplantationDate = transplantationView.getDateString();
+        Task task = model.getTask();
+        task.transplantationType = transplantationView.getTypeString();
+        task.transplantationDate = transplantationView.getDateString();
+        task.transplantationRd = transplantationView.getRdString();
+        task.transplantationLd = transplantationView.getLdString();
+        task.transplantationHd = transplantationView.getHdString();
+        task.transplantationEcho = transplantationView.getEchoType();
+        task.transplantationComment = transplantationView.getComment();
         transplantationView.close();
     }
 }
