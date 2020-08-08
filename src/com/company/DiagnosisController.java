@@ -1,7 +1,6 @@
 package com.company;
 
 public class DiagnosisController {
-    private Model model = ModelSingleton.getModel();
     private DiagnosisView diagnosisView;
 
     public void setDiagnosisView(DiagnosisView diagnosisView) {
@@ -26,7 +25,7 @@ public class DiagnosisController {
     }
 
     public void handleNextButtonClick() {
-        model.getTask().diagnosis = diagnosisView.getDiagnosis();
+        ModelSingleton.getModel().getTask().diagnosis = diagnosisView.getDiagnosis();
         TransplantationView transplantationView = new TransplantationView();
         TransplantationController transplantationController = new TransplantationController();
         transplantationController.setTransplantationView(transplantationView);

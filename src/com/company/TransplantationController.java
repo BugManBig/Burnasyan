@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class TransplantationController {
-    private Model model = ModelSingleton.getModel();
     private TransplantationView transplantationView;
 
     public void setTransplantationView(TransplantationView transplantationView) {
@@ -56,7 +55,7 @@ public class TransplantationController {
     }
 
     public void handleNextButtonClick() {
-        Task task = model.getTask();
+        Task task = ModelSingleton.getModel().getTask();
         task.transplantationType = transplantationView.getTypeString();
         task.transplantationDate = transplantationView.getDateString();
         task.transplantationRd = transplantationView.getRdString();
@@ -64,7 +63,13 @@ public class TransplantationController {
         task.transplantationHd = transplantationView.getHdString();
         task.transplantationEcho = transplantationView.getEchoType();
         task.transplantationComment = transplantationView.getComment();
+
+        HoledohView holedohView = new HoledohView();
+        HoledohController holedohController = new HoledohController();
+        holedohView.setHoledohController(holedohController);
+        holedohController.setHoledohView(holedohView);
+        holedohController.start();
+
         transplantationView.close();
-        model.getTask().info();
     }
 }

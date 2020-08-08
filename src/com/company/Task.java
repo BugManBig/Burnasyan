@@ -6,7 +6,9 @@ public class Task {
     public int doctorId;
     public int patientId;
     public String date;
+
     public String diagnosis;
+
     public String transplantationType;
     public String transplantationDate;
     public String transplantationRd;
@@ -14,6 +16,9 @@ public class Task {
     public String transplantationHd;
     public String transplantationEcho;
     public String transplantationComment;
+
+    public String holedohVis;
+    public String holedohSizes;
 
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
