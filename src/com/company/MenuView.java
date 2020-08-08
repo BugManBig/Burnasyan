@@ -18,8 +18,8 @@ public class MenuView {
         frame.setLayout(null);
         frame.setVisible(true);
 
-        JButton button = new JButton("Add");
-        button.setBounds(90, 30, 100, 30);
+        JButton button = new JButton("Добавить исследование");
+        button.setBounds(50, 30, 180, 30);
         button.addActionListener(e -> menuController.handleAddButtonClick());
         frame.add(button);
 

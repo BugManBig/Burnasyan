@@ -30,16 +30,16 @@ public class DoctorSelectorView {
         patronymicField = createTextfield(100);
         frame.add(patronymicField);
 
-        createLabel("Surname:", 20);
-        createLabel("Name:", 60);
-        createLabel("Patronymic:", 100);
+        createLabel("Фамилия:", 20);
+        createLabel("Имя:", 60);
+        createLabel("Отчество:", 100);
 
-        JButton createButton = new JButton("Create");
+        JButton createButton = new JButton("Создать");
         createButton.setBounds(120, 180, 100, 30);
         createButton.addActionListener(e -> doctorSelectorController.handleCreateButtonClick());
         frame.add(createButton);
 
-        JButton selectButton = new JButton("Select");
+        JButton selectButton = new JButton("Выбрать");
         selectButton.setBounds(330, 180, 100, 30);
         selectButton.addActionListener(e -> doctorSelectorController.handleSelectButtonClick());
         frame.add(selectButton);

@@ -65,5 +65,6 @@ public class TransplantationController {
         task.transplantationEcho = transplantationView.getEchoType();
         task.transplantationComment = transplantationView.getComment();
         transplantationView.close();
+        model.getTask().info();
     }
 }

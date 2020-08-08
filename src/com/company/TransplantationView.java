@@ -36,13 +36,15 @@ public class TransplantationView {
         createLabel("Трансплантация", 200, 20);
         createLabel("Тип трансплантанта:", 20, 70);
         createLabel("Дата трансплантации:", 20, 110);
-        createLabel("ПД:", 20, 150);
+        createLabel("ПД:", 170, 150);
+        createLabel("Размеры", 20, 150);
+        createLabel("трансплантата:", 20, 170);
         ldLabel = new JLabel("ЛД:");
-        ldLabel.setBounds(20, 190, 30, 30);
+        ldLabel.setBounds(170, 190, 30, 30);
         ldLabel.setFont(Params.FONT);
         frame.add(ldLabel);
         hdLabel = new JLabel("ХД:");
-        hdLabel.setBounds(20, 230, 30, 30);
+        hdLabel.setBounds(170, 230, 30, 30);
         hdLabel.setFont(Params.FONT);
         frame.add(hdLabel);
         createLabel("Эхогенность:", 20, 270);
@@ -82,17 +84,17 @@ public class TransplantationView {
 
         rdField = new JTextField();
         rdField.setFont(Params.FONT);
-        rdField.setBounds(70, 150, 100, 30);
+        rdField.setBounds(220, 150, 100, 30);
         frame.add(rdField);
 
         ldField = new JTextField();
         ldField.setFont(Params.FONT);
-        ldField.setBounds(70, 190, 100, 30);
+        ldField.setBounds(220, 190, 100, 30);
         frame.add(ldField);
 
         hdField = new JTextField();
         hdField.setFont(Params.FONT);
-        hdField.setBounds(70, 230, 100, 30);
+        hdField.setBounds(220, 230, 100, 30);
         frame.add(hdField);
 
         echoComboBox = new JComboBox<>(new String[]{
@@ -114,7 +116,7 @@ public class TransplantationView {
         commentArea.setWrapStyleWord(true);
         frame.add(commentArea);
 
-        JButton nextButton = new JButton("Next");
+        JButton nextButton = new JButton("Далее");
         nextButton.addActionListener(e -> transplantationController.handleNextButtonClick());
         nextButton.setBounds(370, 410, 100, 30);
         frame.add(nextButton);
@@ -146,7 +148,11 @@ public class TransplantationView {
     }
 
     public String getDateString() {
-        return dateField.getText();
+        String text = dateField.getText();
+        if (text.contains(" ")) {
+            return "";
+        }
+        return text;
     }
 
     public String getTypeString() {

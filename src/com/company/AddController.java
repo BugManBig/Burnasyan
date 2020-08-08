@@ -50,11 +50,11 @@ public class AddController {
 
     public void handleNextButtonClick() {
         model.getTask().date = addView.getDateString();
-        SizesView sizesView = new SizesView();
-        SizesController sizesController = new SizesController();
-        sizesView.setSizesController(sizesController);
-        sizesController.setSizesView(sizesView);
-        sizesController.start();
+        DiagnosisView diagnosisView = new DiagnosisView();
+        DiagnosisController diagnosisController = new DiagnosisController();
+        diagnosisView.setDiagnosisController(diagnosisController);
+        diagnosisController.setDiagnosisView(diagnosisView);
+        diagnosisController.start();
         addView.close();
     }
 

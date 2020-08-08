@@ -31,40 +31,40 @@ public class AddView {
         frame.setVisible(true);
 
         //Doctor
-        JLabel doctorTitleLabel = new JLabel("Doctor:");
-        doctorTitleLabel.setBounds(20, 20, 60, 20);
+        JLabel doctorTitleLabel = new JLabel("Врач:");
+        doctorTitleLabel.setBounds(20, 20, 50, 20);
         doctorTitleLabel.setFont(Params.FONT);
         frame.add(doctorTitleLabel);
 
         doctorNameLabel = new JLabel();
         doctorNameLabel.setFont(Params.FONT);
-        doctorNameLabel.setBounds(80, 20, 300, 20);
+        doctorNameLabel.setBounds(70, 20, 300, 20);
         frame.add(doctorNameLabel);
 
-        JButton selectDoctorButton = new JButton("Select");
+        JButton selectDoctorButton = new JButton("Выбрать");
         selectDoctorButton.setBounds(20, 50, 100, 30);
         selectDoctorButton.addActionListener(e -> addController.handleSelectDoctorButtonClick());
         frame.add(selectDoctorButton);
 
         //Patient
-        JLabel patientTitleLabel = new JLabel("Patient:");
-        patientTitleLabel.setBounds(20, 120, 60, 20);
+        JLabel patientTitleLabel = new JLabel("Пациент:");
+        patientTitleLabel.setBounds(20, 120, 70, 20);
         patientTitleLabel.setFont(Params.FONT);
         frame.add(patientTitleLabel);
 
         patientFioLabel = new JLabel();
         patientFioLabel.setFont(Params.FONT);
-        patientFioLabel.setBounds(80, 120, 400, 20);
+        patientFioLabel.setBounds(90, 120, 400, 20);
         frame.add(patientFioLabel);
 
-        JButton selectPatientButton = new JButton("Select");
+        JButton selectPatientButton = new JButton("Выбрать");
         selectPatientButton.setBounds(20, 150, 100, 30);
         selectPatientButton.addActionListener(e -> addController.handleSelectPatientButtonClick());
         frame.add(selectPatientButton);
 
         //Date
-        JLabel dateLabel = new JLabel("Date:");
-        dateLabel.setBounds(20, 220, 50, 30);
+        JLabel dateLabel = new JLabel("Дата обследования:");
+        dateLabel.setBounds(20, 220, 150, 30);
         dateLabel.setFont(Params.FONT);
         frame.add(dateLabel);
 
@@ -73,7 +73,7 @@ public class AddView {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dateField.setBounds(70, 220, 100, 30);
+        dateField.setBounds(180, 220, 100, 30);
         dateField.setFont(Params.FONT);
         dateField.addKeyListener(new KeyAdapter() {
             @Override
@@ -84,7 +84,7 @@ public class AddView {
         });
         frame.add(dateField);
 
-        JButton nextButton = new JButton("Next");
+        JButton nextButton = new JButton("Далее");
         nextButton.setBounds(450, 300, 100, 30);
         nextButton.addActionListener(e -> addController.handleNextButtonClick());
         frame.add(nextButton);

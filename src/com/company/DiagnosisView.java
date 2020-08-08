@@ -19,7 +19,7 @@ public class DiagnosisView {
         frame.setLayout(null);
         frame.setVisible(true);
 
-        JLabel diagnosisTitleLabel = new JLabel("Diagnosis:");
+        JLabel diagnosisTitleLabel = new JLabel("Диагноз:");
         diagnosisTitleLabel.setBounds(20, 20, 80, 30);
         diagnosisTitleLabel.setFont(Params.FONT);
         frame.add(diagnosisTitleLabel);
@@ -29,12 +29,12 @@ public class DiagnosisView {
         diagnosisLabel.setFont(Params.FONT);
         frame.add(diagnosisLabel);
 
-        JButton selectButton = new JButton("Select");
+        JButton selectButton = new JButton("Выбрать");
         selectButton.setBounds(20, 60, 100, 30);
         selectButton.addActionListener(e -> diagnosisController.handleSelectButtonClick());
         frame.add(selectButton);
 
-        JButton nextButton = new JButton("Next");
+        JButton nextButton = new JButton("Далее");
         nextButton.addActionListener(e -> diagnosisController.handleNextButtonClick());
         nextButton.setBounds(450, 300, 100, 30);
         frame.add(nextButton);

@@ -17,7 +17,7 @@ public class PatientSelectorView {
     private JComboBox<String> sexComboBox;
     private JFrame frame;
     private JTable table;
-    private String[] sexTypes = {"---", "Male", "Female"};
+    private String[] sexTypes = {"---", "Мужской", "Женский"};
 
     public void setPatientSelectorController(PatientSelectorController patientSelectorController) {
         this.patientSelectorController = patientSelectorController;
@@ -26,7 +26,7 @@ public class PatientSelectorView {
     public void create() {
         frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(800, 300);
+        frame.setSize(800, 270);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);
@@ -42,27 +42,28 @@ public class PatientSelectorView {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        birthdayField.setBounds(120, 140, 200, 30);
+        birthdayField.setBounds(140, 140, 180, 30);
         birthdayField.setFont(Params.FONT);
         frame.add(birthdayField);
 
         sexComboBox = new JComboBox<>(sexTypes);
-        sexComboBox.setBounds(120, 180, 100, 30);
+        sexComboBox.setBounds(140, 180, 100, 30);
         sexComboBox.setFont(Params.FONT);
         frame.add(sexComboBox);
 
-        createLabel("Surname:", 20);
-        createLabel("Name:", 60);
-        createLabel("Patronymic:", 100);
-        createLabel("Birthday:", 140);
-        createLabel("Sex:", 180);
+        createLabel("Фамилия:", 20);
+        createLabel("Имя:", 60);
+        createLabel("Отчество:", 100);
+        createLabel("Дата рождения:", 140);
+        createLabel("Пол:", 180);
 
-        JButton createButton = new JButton("Create");
-        createButton.setBounds(120, 220, 100, 30);
+        JButton createButton = new JButton("+");
+        createButton.setBounds(270, 180, 50, 30);
+        createButton.setFont(Params.FONT);
         createButton.addActionListener(e -> patientSelectorController.handleCreateButtonClick());
         frame.add(createButton);
 
-        JButton selectButton = new JButton("Select");
+        JButton selectButton = new JButton("Выбрать");
         selectButton.setBounds(330, 180, 100, 30);
         selectButton.addActionListener(e -> patientSelectorController.handleSelectButtonClick());
         frame.add(selectButton);
@@ -86,7 +87,7 @@ public class PatientSelectorView {
 
     private JTextField createTextfield(int yOffset) {
         JTextField textField = new JTextField();
-        textField.setBounds(120, yOffset, 200, 30);
+        textField.setBounds(140, yOffset, 180, 30);
         textField.setFont(Params.FONT);
         textField.addKeyListener(new KeyAdapter() {
             @Override
@@ -100,7 +101,7 @@ public class PatientSelectorView {
 
     private void createLabel(String text, int yOffset) {
         JLabel label = new JLabel(text);
-        label.setBounds(20, yOffset, 100, 30);
+        label.setBounds(20, yOffset, 120, 30);
         label.setFont(Params.FONT);
         frame.add(label);
     }
