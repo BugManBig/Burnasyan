@@ -15,7 +15,13 @@ public class HoledohController {
         Task task = ModelSingleton.getModel().getTask();
         task.holedohVis = holedohView.getComboBoxText();
         task.holedohSizes = holedohView.getSizes();
-        task.info();
+
+        VorotnayaVenaView vorotnayaVenaView = new VorotnayaVenaView();
+        VorotnayaVenaController vorotnayaVenaController = new VorotnayaVenaController();
+        vorotnayaVenaView.setVorotnayaVenaController(vorotnayaVenaController);
+        vorotnayaVenaController.setVorotnayaVenaView(vorotnayaVenaView);
+        vorotnayaVenaController.start();
+
         holedohView.close();
     }
 }

@@ -20,6 +20,11 @@ public class Task {
     public String holedohVis;
     public String holedohSizes;
 
+    public String vorotnayaSizeBefore;
+    public String vorotnayaSizeAfter;
+    public String vorotnayaSpeedBefore;
+    public String vorotnayaSpeedAfter;
+
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {
