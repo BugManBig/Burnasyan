@@ -36,7 +36,7 @@ public class DiagnosisSelectorController {
     }
 
     public void handleAddButtonClick() {
-        String diagnosis = JOptionPane.showInputDialog("Enter new diagnosis");
+        String diagnosis = JOptionPane.showInputDialog("Введите новый диагноз");
         if (diagnosis == null) {
             return;
         }

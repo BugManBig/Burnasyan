@@ -34,8 +34,9 @@ public class DoctorSelectorView {
         createLabel("Имя:", 60);
         createLabel("Отчество:", 100);
 
-        JButton createButton = new JButton("Создать");
-        createButton.setBounds(120, 180, 100, 30);
+        JButton createButton = new JButton("+");
+        createButton.setBounds(120, 180, 50, 30);
+        createButton.setFont(Params.FONT);
         createButton.addActionListener(e -> doctorSelectorController.handleCreateButtonClick());
         frame.add(createButton);
 

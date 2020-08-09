@@ -24,13 +24,14 @@ public class DiagnosisSelectorView {
         list.setFont(Params.FONT);
         frame.add(list);
 
-        JButton selectButton = new JButton("Select");
+        JButton selectButton = new JButton("Выбрать");
         selectButton.setBounds(210, 320, 100, 30);
         selectButton.addActionListener(e -> diagnosisSelectorController.handleSelectButtonClick());
         frame.add(selectButton);
 
-        JButton addButton = new JButton("Add");
-        addButton.setBounds(10, 320, 100, 30);
+        JButton addButton = new JButton("+");
+        addButton.setBounds(10, 320, 50, 30);
+        addButton.setFont(Params.FONT);
         addButton.addActionListener(e -> diagnosisSelectorController.handleAddButtonClick());
         frame.add(addButton);
     }
