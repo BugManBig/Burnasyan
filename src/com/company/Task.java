@@ -25,6 +25,10 @@ public class Task {
     public String vorotnayaSpeedBefore;
     public String vorotnayaSpeedAfter;
 
+    public String arteryVis;
+    public String arterySpeed;
+    public String arteryIr;
+
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {

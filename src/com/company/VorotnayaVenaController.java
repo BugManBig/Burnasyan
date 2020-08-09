@@ -17,6 +17,13 @@ public class VorotnayaVenaController {
         task.vorotnayaSizeAfter = vorotnayaVenaView.getSizeAfter();
         task.vorotnayaSpeedBefore = vorotnayaVenaView.getSpeedBefore();
         task.vorotnayaSpeedAfter = vorotnayaVenaView.getSpeedAfter();
+
+        ArteryView arteryView = new ArteryView();
+        ArteryController arteryController = new ArteryController();
+        arteryView.setArteryController(arteryController);
+        arteryController.setArteryView(arteryView);
+        arteryController.start();
+
         vorotnayaVenaView.close();
     }
 }
