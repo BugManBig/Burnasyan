@@ -37,6 +37,10 @@ public class Task {
     public String selezenkaDiameter;
     public String selezenkaSpeed;
 
+    public String liquidIs;
+    public String liquidComment;
+    public String liquidDividing;
+
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {

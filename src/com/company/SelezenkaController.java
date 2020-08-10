@@ -44,7 +44,11 @@ public class SelezenkaController {
         task.selezenkaDiameter = selezenkaView.getDiameter();
         task.selezenkaSpeed = selezenkaView.getSpeed();
 
-
+        LiquidView liquidView = new LiquidView();
+        LiquidController liquidController = new LiquidController();
+        liquidView.setLiquidController(liquidController);
+        liquidController.setLiquidView(liquidView);
+        liquidController.start();
 
         selezenkaView.close();
     }
