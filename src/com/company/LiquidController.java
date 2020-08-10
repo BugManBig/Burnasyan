@@ -17,7 +17,11 @@ public class LiquidController {
         task.liquidComment = liquidView.getComment();
         task.liquidDividing = liquidView.getDividing();
 
-        
+        SkoplenieView skoplenieView = new SkoplenieView();
+        SkoplenieController skoplenieController = new SkoplenieController();
+        skoplenieView.setSkoplenieController(skoplenieController);
+        skoplenieController.setSkoplenieView(skoplenieView);
+        skoplenieController.start();
 
         liquidView.close();
     }

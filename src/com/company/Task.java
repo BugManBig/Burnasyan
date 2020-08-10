@@ -41,6 +41,9 @@ public class Task {
     public String liquidComment;
     public String liquidDividing;
 
+    public String skoplenieIs;
+    public String skoplenieComment;
+
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {
