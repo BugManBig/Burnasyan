@@ -12,12 +12,7 @@ public class DiagnosisView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame = Params.createFrame();
 
         JLabel diagnosisTitleLabel = new JLabel("Диагноз:");
         diagnosisTitleLabel.setBounds(20, 20, 80, 30);
@@ -39,7 +34,7 @@ public class DiagnosisView {
         nextButton.setBounds(450, 300, 100, 30);
         frame.add(nextButton);
 
-        frame.repaint();
+        frame.setVisible(true);
     }
 
     public void setDiagnosisLabel(String text) {

@@ -12,12 +12,7 @@ public class DiagnosisSelectorView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame = Params.createFrame();
 
         list = new JList<>();
         list.setBounds(10, 10, 300, 300);
@@ -34,6 +29,8 @@ public class DiagnosisSelectorView {
         addButton.setFont(Params.FONT);
         addButton.addActionListener(e -> diagnosisSelectorController.handleAddButtonClick());
         frame.add(addButton);
+
+        frame.setVisible(true);
     }
 
     public void setListData(String[] data) {

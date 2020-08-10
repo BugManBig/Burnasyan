@@ -23,12 +23,7 @@ public class AddView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame = Params.createFrame();
 
         //Doctor
         JLabel doctorTitleLabel = new JLabel("Врач:");
@@ -89,7 +84,7 @@ public class AddView {
         nextButton.addActionListener(e -> addController.handleNextButtonClick());
         frame.add(nextButton);
 
-        frame.repaint();
+        frame.setVisible(true);
     }
 
     public void setDateField(String string) {

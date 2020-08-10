@@ -27,11 +27,7 @@ public class TransplantationView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
+        frame = Params.createFrame(600, 500);
 
         createLabel("Трансплантация", 200, 20);
         createLabel("Тип трансплантанта:", 20, 70);

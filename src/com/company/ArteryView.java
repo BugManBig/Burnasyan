@@ -16,11 +16,7 @@ public class ArteryView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
+        frame = Params.createFrame();
 
         createLabel("Собственная артерия печени", 180, 20);
         createLabel("Визуализируется:", 20, 60);

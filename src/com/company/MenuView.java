@@ -11,19 +11,14 @@ public class MenuView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame = Params.createFrame(300, 300);
 
         JButton button = new JButton("Добавить исследование");
         button.setBounds(50, 30, 180, 30);
         button.addActionListener(e -> menuController.handleAddButtonClick());
         frame.add(button);
 
-        frame.repaint();
+        frame.setVisible(true);
     }
 
     public void close() {

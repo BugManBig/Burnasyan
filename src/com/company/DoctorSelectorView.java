@@ -16,12 +16,7 @@ public class DoctorSelectorView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(800, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame = Params.createFrame(800, 300);
 
         surnameField = createTextfield(20);
         frame.add(surnameField);
@@ -51,7 +46,7 @@ public class DoctorSelectorView {
         scrollPane.setBounds(330, 20, 400, 150);
         frame.add(scrollPane);
 
-        frame.repaint();
+        frame.setVisible(true);
     }
 
     public int getSelectedIndex() {

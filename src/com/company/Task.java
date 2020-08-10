@@ -29,6 +29,14 @@ public class Task {
     public String arterySpeed;
     public String arteryIr;
 
+    public String liverType;
+    public String liverSpeed;
+
+    public String selezenkaSizes;
+    public String selezenkaSquare;
+    public String selezenkaDiameter;
+    public String selezenkaSpeed;
+
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {

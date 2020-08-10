@@ -16,7 +16,13 @@ public class ArteryController {
         task.arteryVis = arteryView.getComboBox();
         task.arterySpeed = arteryView.getSpeedField();
         task.arteryIr = arteryView.getIrField();
-        task.info();
+
+        LiverVenyView liverVenyView = new LiverVenyView();
+        LiverVenyController liverVenyController = new LiverVenyController();
+        liverVenyView.setLiverVenyController(liverVenyController);
+        liverVenyController.setLiverVenyView(liverVenyView);
+        liverVenyController.start();
+
         arteryView.close();
     }
 }

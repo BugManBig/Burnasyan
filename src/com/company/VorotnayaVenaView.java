@@ -17,11 +17,7 @@ public class VorotnayaVenaView {
     }
 
     public void create() {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
+        frame = Params.createFrame();
 
         createLabel("Воротная вена", 250, 20);
         createLabel("Диаметр:", 120, 60);
