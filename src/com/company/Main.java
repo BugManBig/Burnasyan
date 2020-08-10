@@ -7,5 +7,7 @@ public class Main {
         menuView.setMenuController(menuController);
         menuController.setMenuView(menuView);
         menuController.start();
+
+        new ElastoView().create();
     }
 }
