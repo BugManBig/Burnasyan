@@ -1,6 +1,8 @@
 package com.company;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task {
     public int doctorId;
@@ -56,14 +58,16 @@ public class Task {
 
     public String comment;
 
-    public void info() {
+    public List<String> getData() {
+        List<String> data = new ArrayList<>();
         Field[] declaredFields = Task.class.getDeclaredFields();
         for (Field field : declaredFields) {
             try {
-                System.out.println(field.getName() + ": " + field.get(this));
+                data.add(field.getName() + "=" + field.get(this));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
+        return data;
     }
 }

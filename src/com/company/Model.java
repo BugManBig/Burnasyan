@@ -15,7 +15,19 @@ public class Model {
     private List<String> diagnosis;
     private int nextPatientId;
     private int nextDoctorId;
+    private int nextResearchId;
     private Task task;
+
+    public void calculateNextResearchId() {
+        String[] files = new File(Params.get("PATH") + "/Research").list();
+        for (String file : files) {
+            int id = Integer.parseInt(file.substring(0, file.indexOf('.')));
+            if (id > nextResearchId) {
+                nextResearchId = id;
+            }
+        }
+        nextResearchId++;
+    }
 
     public void createTask() {
         task = new Task();
@@ -160,5 +172,15 @@ public class Model {
             return new Person(id, lines.get(0), lines.get(1), lines.get(2));
         }
         return new Person(id, lines.get(0), lines.get(1), lines.get(2), lines.get(3), Sex.valueOf(lines.get(4)));
+    }
+
+    public void saveResearch() {
+        calculateNextResearchId();
+        try {
+            Files.write(new File(Params.get("PATH") + "/Research/" + nextResearchId + ".txt").toPath(),
+                    task.getData(), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -12,7 +12,9 @@ public class CommentController {
     }
 
     public void handleNextButtonClick() {
-        ModelSingleton.getModel().getTask().comment = commentView.getComment();
+        Model model = ModelSingleton.getModel();
+        model.getTask().comment = commentView.getComment();
+        model.saveResearch();
 
         MenuView menuView = new MenuView();
         MenuController menuController = new MenuController();
