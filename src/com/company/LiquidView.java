@@ -21,7 +21,7 @@ public class LiquidView {
         createLabel("Жидкость:", 20, 60);
         createLabel("Комментарий:", 20, 100);
         createLabel("Расщепление", 20, 250);
-        createLabel("листков брюшина:", 20, 270);
+        createLabel("листков брюшины:", 20, 270);
 
         liquidComboBox = new JComboBox<>(new String[]{"---", "Да", "Нет"});
         liquidComboBox.setBounds(180, 60, 100, 30);

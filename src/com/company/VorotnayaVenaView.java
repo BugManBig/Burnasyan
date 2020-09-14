@@ -11,6 +11,7 @@ public class VorotnayaVenaView {
     private JTextField sizeAfterField;
     private JTextField speedBeforeField;
     private JTextField speedAfterField;
+    private JTextArea commentArea;
 
     public void setVorotnayaVenaController(VorotnayaVenaController vorotnayaVenaController) {
         this.vorotnayaVenaController = vorotnayaVenaController;
@@ -26,6 +27,7 @@ public class VorotnayaVenaView {
         createLabel("Скорость:", 120, 190);
         createLabel("До анастомоза:", 20, 230);
         createLabel("После анастомоза:", 20, 270);
+        createLabel("Комментарий:", 300, 60);
 
         sizeBeforeField = new JTextField();
         sizeBeforeField.setBounds(170, 100, 100, 30);
@@ -46,6 +48,13 @@ public class VorotnayaVenaView {
         speedAfterField.setBounds(170, 270, 100, 30);
         speedAfterField.setFont(Params.FONT);
         frame.add(speedAfterField);
+
+        commentArea = new JTextArea();
+        commentArea.setBounds(300, 100, 200, 100);
+        commentArea.setFont(Params.FONT);
+        commentArea.setLineWrap(true);
+        commentArea.setWrapStyleWord(true);
+        frame.add(commentArea);
 
 
         JButton nextButton = new JButton("Далее");
@@ -77,6 +86,10 @@ public class VorotnayaVenaView {
 
     public String getSpeedAfter() {
         return speedAfterField.getText();
+    }
+
+    public String getComment() {
+        return commentArea.getText();
     }
 
     public void close() {

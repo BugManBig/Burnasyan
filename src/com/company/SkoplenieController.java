@@ -16,7 +16,11 @@ public class SkoplenieController {
         task.skoplenieIs = skoplenieView.getComboBox();
         task.skoplenieComment = skoplenieView.getComment();
 
-
+        ElastoView elastoView = new ElastoView();
+        ElastoController elastoController = new ElastoController();
+        elastoView.setElastoController(elastoController);
+        elastoController.setElastoView(elastoView);
+        elastoController.start();
 
         skoplenieView.close();
     }

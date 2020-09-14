@@ -24,6 +24,7 @@ public class Task {
     public String vorotnayaSizeAfter;
     public String vorotnayaSpeedBefore;
     public String vorotnayaSpeedAfter;
+    public String vorotnayaComment;
 
     public String arteryVis;
     public String arterySpeed;
@@ -43,6 +44,17 @@ public class Task {
 
     public String skoplenieIs;
     public String skoplenieComment;
+
+    public String elastoQ3;
+    public String elastoQ10;
+    public String elastoPq;
+    public String elastoSQ3;
+    public String inaccuracy1;
+    public String inaccuracy2;
+    public String inaccuracy3;
+    public String inaccuracy4;
+
+    public String comment;
 
     public void info() {
         Field[] declaredFields = Task.class.getDeclaredFields();
