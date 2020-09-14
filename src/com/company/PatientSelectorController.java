@@ -35,7 +35,7 @@ public class PatientSelectorController {
         strings.add(patientSelectorView.getBirthday());
         strings.add(patientSelectorView.getSex().toString());
         try {
-            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Patients\\" + model.getNextPatientId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
+            Files.write(new File(Params.get("PATH") + "/Patients/" + model.getNextPatientId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
         } catch (IOException e) {
             e.printStackTrace();
         }

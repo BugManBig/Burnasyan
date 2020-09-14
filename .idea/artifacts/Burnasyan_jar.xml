@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Burnasyan:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Burnasyan_jar</output-path>
+    <root id="archive" name="Burnasyan.jar">
+      <element id="module-output" name="Burnasyan" />
+    </root>
+  </artifact>
+</component>

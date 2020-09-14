@@ -60,6 +60,7 @@ public class ElastoView {
         inaccuracyField.setFont(Params.FONT);
         frame.add(inaccuracyField);
 
+        /*
         JPanel panel = new JPanel();
         panel.setBounds(10, 60, 280, 160);
         panel.setBackground(Color.decode("0xCCCCCC"));
@@ -69,6 +70,8 @@ public class ElastoView {
         panel.setBounds(10, 230, 280, 130);
         panel.setBackground(Color.decode("0xCCCCCC"));
         frame.add(panel);
+
+         */
 
         frame.setVisible(true);
     }

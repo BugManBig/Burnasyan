@@ -42,7 +42,7 @@ public class DoctorSelectorController {
         strings.add(doctorSelectorView.getName());
         strings.add(doctorSelectorView.getPatronymic());
         try {
-            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Doctors\\" + model.getNextDoctorId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
+            Files.write(new File(Params.get("PATH") + "/Doctors/" + model.getNextDoctorId() + ".txt").toPath(), strings, StandardOpenOption.CREATE_NEW);
         } catch (IOException e) {
             e.printStackTrace();
         }

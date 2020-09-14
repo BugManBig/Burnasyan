@@ -69,11 +69,14 @@ public class Model {
     }
 
     public void readPatients() {
-        File file = new File("D:\\Soft\\IdeaTest\\Burnasyan\\Patients");
+        File file = new File(Params.get("PATH") + "/Patients");
         File[] files = file.listFiles();
         patients = new ArrayList<>();
         nextPatientId = 0;
         for (int i = 0; i < files.length; i++) {
+            if (files[i].isHidden()) {
+                continue;
+            }
             patients.add(getPersonFromFile(files[i]));
             String name = files[i].getName();
             int currentId = Integer.parseInt(name.substring(0, name.indexOf(".")));
@@ -85,11 +88,14 @@ public class Model {
     }
 
     public void readDoctors() {
-        File file = new File("D:\\Soft\\IdeaTest\\Burnasyan\\Doctors");
+        File file = new File(Params.get("PATH") + "/Doctors");
         File[] files = file.listFiles();
         doctors = new ArrayList<>();
         nextDoctorId = 0;
         for (int i = 0; i < files.length; i++) {
+            if (files[i].isHidden()) {
+                continue;
+            }
             doctors.add(getPersonFromFile(files[i]));
             String name = files[i].getName();
             int currentId = Integer.parseInt(name.substring(0, name.indexOf(".")));
@@ -101,7 +107,7 @@ public class Model {
     }
 
     public void readDiagnosis() {
-        File file = new File("D:\\Soft\\IdeaTest\\Burnasyan\\Diagnosis.txt");
+        File file = new File(Params.get("PATH") + "/Diagnosis.txt");
         try {
             diagnosis = Files.readAllLines(file.toPath());
         } catch (IOException e) {
@@ -113,7 +119,7 @@ public class Model {
         List<String> diagnoses = new ArrayList<>();
         diagnoses.add(diagnosis);
         try {
-            Files.write(new File("D:\\Soft\\IdeaTest\\Burnasyan\\Diagnosis.txt").toPath(),
+            Files.write(new File(Params.get("PATH") + "/Diagnosis.txt").toPath(),
                     diagnoses, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
