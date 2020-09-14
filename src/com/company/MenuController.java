@@ -19,4 +19,12 @@ public class MenuController {
         addController.start();
         menuView.close();
     }
+
+    public void handleSearchButtonClick() {
+        SingleSearchView singleSearchView = new SingleSearchView();
+        SingleSearchController singleSearchController = new SingleSearchController();
+        singleSearchView.setSingleSearchController(singleSearchController);
+        singleSearchController.setSingleSearchView(singleSearchView);
+        singleSearchController.start();
+    }
 }

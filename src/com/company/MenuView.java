@@ -13,10 +13,15 @@ public class MenuView {
     public void create() {
         frame = Params.createFrame(300, 300);
 
-        JButton button = new JButton("Добавить исследование");
-        button.setBounds(50, 30, 180, 30);
-        button.addActionListener(e -> menuController.handleAddButtonClick());
-        frame.add(button);
+        JButton addButton = new JButton("Добавить исследование");
+        addButton.setBounds(50, 30, 180, 30);
+        addButton.addActionListener(e -> menuController.handleAddButtonClick());
+        frame.add(addButton);
+
+        JButton searchButton = new JButton("Поиск");
+        searchButton.setBounds(50, 70, 180, 30);
+        searchButton.addActionListener(e -> menuController.handleSearchButtonClick());
+        frame.add(searchButton);
 
         frame.setVisible(true);
     }
