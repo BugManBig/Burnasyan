@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 
 public class Model {
     private List<Person> patients;
@@ -182,5 +184,22 @@ public class Model {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<PairIdDate> getResearchList(int patientId) {
+        List<PairIdDate> list = new ArrayList<>();
+        File[] research = new File(Params.get("PATH") + "/Research").listFiles();
+        for (int i = 0; i < research.length; i++) {
+            Properties properties = new Properties();
+            try {
+                properties.load(new FileReader(research[i]));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (properties.getProperty("patientId").equals(String.valueOf(patientId))) {
+                list.add(new PairIdDate(Integer.parseInt(research[i].getName().substring(0, research[i].getName().lastIndexOf('.'))), properties.getProperty("date")));
+            }
+        }
+        return list;
     }
 }

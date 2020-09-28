@@ -16,7 +16,7 @@ public class DoctorSelectorView {
     }
 
     public void create() {
-        frame = Params.createFrame(800, 300);
+        frame = Params.createFrame(770, 300);
 
         surnameField = createTextfield(20);
         frame.add(surnameField);

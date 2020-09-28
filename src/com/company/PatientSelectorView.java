@@ -24,7 +24,7 @@ public class PatientSelectorView {
     }
 
     public void create() {
-        frame = Params.createFrame(800, 270);
+        frame = Params.createFrame(770, 270);
 
         surnameField = createTextfield(20);
         frame.add(surnameField);
@@ -77,7 +77,7 @@ public class PatientSelectorView {
     }
 
     public void setTable(String[][] data) {
-        table.setModel(new DefaultTableModel(data, new String[]{"Patient", "Birthday"}));
+        table.setModel(new DefaultTableModel(data, new String[]{"Пациент", "Дата рождения"}));
     }
 
     private JTextField createTextfield(int yOffset) {
