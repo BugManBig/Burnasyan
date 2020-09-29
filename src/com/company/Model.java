@@ -6,10 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Model {
     private List<Person> patients;
@@ -197,9 +195,29 @@ public class Model {
                 e.printStackTrace();
             }
             if (properties.getProperty("patientId").equals(String.valueOf(patientId))) {
-                list.add(new PairIdDate(Integer.parseInt(research[i].getName().substring(0, research[i].getName().lastIndexOf('.'))), properties.getProperty("date")));
+                list.add(new PairIdDate(
+                        Integer.parseInt(research[i].getName().substring(0, research[i].getName().lastIndexOf('.'))),
+                        properties.getProperty("date")));
             }
         }
+        list.sort(new Comparator<PairIdDate>() {
+            @Override
+            public int compare(PairIdDate o1, PairIdDate o2) {
+                String[] split = o1.date.split("\\.");
+                int day = Integer.parseInt(split[0]);
+                int month = Integer.parseInt(split[1]);
+                int year = Integer.parseInt(split[2]);
+                int date1 = year * 400 + month * 31 + day;
+
+                split = o2.date.split("\\.");
+                day = Integer.parseInt(split[0]);
+                month = Integer.parseInt(split[1]);
+                year = Integer.parseInt(split[2]);
+                int date2 = year * 400 + month * 31 + day;
+
+                return Integer.compare(date2, date1);
+            }
+        });
         return list;
     }
 }

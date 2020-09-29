@@ -27,11 +27,25 @@ public class SingleSearchController {
             data[i][0] = foundedList.get(i).getFio();
             data[i][1] = foundedList.get(i).getBirthdayString();
         }
-        singleSearchView.setTable(data);
+        singleSearchView.setPatientsTable(data);
+        setButtonEnabled();
     }
 
     public void handleSelectButtonClick() {
         int patientId = foundedList.get(singleSearchView.getSelectedIndex()).getId();
-        System.out.println(model.getResearchList(patientId));
+        List<PairIdDate> researchList = model.getResearchList(patientId);
+        String[] data = new String[researchList.size()];
+        for (int i = 0; i < researchList.size(); i++) {
+            data[i] = researchList.get(i).date;
+        }
+        singleSearchView.setResearchList(data);
+    }
+
+    public void handleListClick() {
+        setButtonEnabled();
+    }
+
+    private void setButtonEnabled() {
+        singleSearchView.setButtonEnabled(singleSearchView.getSelectedIndex() != -1);
     }
 }

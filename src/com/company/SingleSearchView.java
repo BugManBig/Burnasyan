@@ -2,22 +2,21 @@ package com.company;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.text.ParseException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SingleSearchView {
     private JTextField nameField;
     private JTextField surnameField;
     private JTextField patronymicField;
-    private JTextField birthdayField;
-    private JComboBox<String> sexComboBox;
     private JFrame frame;
-    private JTable table;
-    private String[] sexTypes = {"---", "Мужской", "Женский"};
+    private JTable patientsTable;
+    private JList<String> researchList;
 
     private SingleSearchController singleSearchController;
+    private JButton selectButton;
 
     public void setSingleSearchController(SingleSearchController singleSearchController) {
         this.singleSearchController = singleSearchController;
@@ -37,18 +36,34 @@ public class SingleSearchView {
         createLabel("Имя:", 60);
         createLabel("Отчество:", 100);
 
-        JButton selectButton = new JButton("Выбрать");
+        selectButton = new JButton("Выбрать");
         selectButton.setBounds(220, 140, 100, 30);
         selectButton.addActionListener(e -> singleSearchController.handleSelectButtonClick());
         frame.add(selectButton);
 
-        table = new JTable();
-        table.setFont(Params.FONT);
-        JScrollPane scrollPane = new JScrollPane(table);
+        patientsTable = new JTable();
+        patientsTable.setFont(Params.FONT);
+        JScrollPane scrollPane = new JScrollPane(patientsTable);
         scrollPane.setBounds(330, 20, 400, 150);
+        patientsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                singleSearchController.handleListClick();
+            }
+        });
         frame.add(scrollPane);
 
+        researchList = new JList<>();
+        researchList.setFont(Params.FONT);
+        JScrollPane scrollPane2 = new JScrollPane(researchList);
+        scrollPane2.setBounds(20, 180, 710, 520);
+        frame.add(scrollPane2);
+
         frame.setVisible(true);
+    }
+
+    public void setButtonEnabled(boolean b) {
+        selectButton.setEnabled(b);
     }
 
     private JTextField createTextfield(int yOffset) {
@@ -72,8 +87,12 @@ public class SingleSearchView {
         frame.add(label);
     }
 
-    public void setTable(String[][] data) {
-        table.setModel(new DefaultTableModel(data, new String[]{"Пациент", "Дата рождения"}));
+    public void setPatientsTable(String[][] data) {
+        patientsTable.setModel(new DefaultTableModel(data, new String[]{"Пациент", "Дата рождения"}));
+    }
+
+    public void setResearchList(String[] data) {
+        researchList.setListData(data);
     }
 
     public String getName() {
@@ -89,6 +108,6 @@ public class SingleSearchView {
     }
 
     public int getSelectedIndex() {
-        return table.getSelectedRow();
+        return patientsTable.getSelectedRow();
     }
 }
