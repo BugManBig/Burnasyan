@@ -16,7 +16,7 @@ public class SingleSearchView {
     private JList<String> researchList;
 
     private SingleSearchController singleSearchController;
-    private JButton selectButton;
+    private JButton selectPatientButton;
 
     public void setSingleSearchController(SingleSearchController singleSearchController) {
         this.singleSearchController = singleSearchController;
@@ -36,10 +36,15 @@ public class SingleSearchView {
         createLabel("Имя:", 60);
         createLabel("Отчество:", 100);
 
-        selectButton = new JButton("Выбрать");
-        selectButton.setBounds(220, 140, 100, 30);
-        selectButton.addActionListener(e -> singleSearchController.handleSelectButtonClick());
-        frame.add(selectButton);
+        selectPatientButton = new JButton("Выбрать");
+        selectPatientButton.setBounds(220, 140, 100, 30);
+        selectPatientButton.addActionListener(e -> singleSearchController.handleSelectPatientButtonClick());
+        frame.add(selectPatientButton);
+
+        JButton selectResearchButton = new JButton("Выбрать");
+        selectResearchButton.setBounds(20, 710, 100, 30);
+        selectResearchButton.addActionListener(e -> singleSearchController.handleSelectResearchButtonClick());
+        frame.add(selectResearchButton);
 
         patientsTable = new JTable();
         patientsTable.setFont(Params.FONT);
@@ -62,8 +67,8 @@ public class SingleSearchView {
         frame.setVisible(true);
     }
 
-    public void setButtonEnabled(boolean b) {
-        selectButton.setEnabled(b);
+    public void setPatientButtonEnabled(boolean b) {
+        selectPatientButton.setEnabled(b);
     }
 
     private JTextField createTextfield(int yOffset) {
@@ -107,7 +112,11 @@ public class SingleSearchView {
         return patronymicField.getText();
     }
 
-    public int getSelectedIndex() {
+    public int getSelectedPatientIndex() {
         return patientsTable.getSelectedRow();
+    }
+
+    public int getSelectedResearchIndex() {
+        return researchList.getSelectedIndex();
     }
 }

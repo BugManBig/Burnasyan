@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
@@ -153,19 +154,18 @@ public class Model {
         return filteredList;
     }
 
-    private Person getPersonFromFile(File file) {
-        List<String> lines = new ArrayList<>();
+    public static List<String> getFileContents(String path) {
+        List<String> lines = null;
         try {
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                lines.add(line);
-                line = bufferedReader.readLine();
-            }
+            lines = Files.readAllLines(new File(path).toPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return lines;
+    }
+
+    private Person getPersonFromFile(File file) {
+        List<String> lines = getFileContents(file.getPath());
         String fileName = file.getName();
         int id = Integer.parseInt(fileName.substring(0, fileName.lastIndexOf(".")));
         if (lines.size() < 5) {

@@ -1,11 +1,17 @@
 package com.company;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Properties;
 
 public class SingleSearchController {
     private SingleSearchView singleSearchView;
     private List<Person> foundedList;
     private Model model = ModelSingleton.getModel();
+    private List<PairIdDate> researchList;
 
     public void setSingleSearchView(SingleSearchView singleSearchView) {
         this.singleSearchView = singleSearchView;
@@ -28,12 +34,12 @@ public class SingleSearchController {
             data[i][1] = foundedList.get(i).getBirthdayString();
         }
         singleSearchView.setPatientsTable(data);
-        setButtonEnabled();
+        setButtonState();
     }
 
-    public void handleSelectButtonClick() {
-        int patientId = foundedList.get(singleSearchView.getSelectedIndex()).getId();
-        List<PairIdDate> researchList = model.getResearchList(patientId);
+    public void handleSelectPatientButtonClick() {
+        int patientId = foundedList.get(singleSearchView.getSelectedPatientIndex()).getId();
+        researchList = model.getResearchList(patientId);
         String[] data = new String[researchList.size()];
         for (int i = 0; i < researchList.size(); i++) {
             data[i] = researchList.get(i).date;
@@ -42,10 +48,16 @@ public class SingleSearchController {
     }
 
     public void handleListClick() {
-        setButtonEnabled();
+        setButtonState();
     }
 
-    private void setButtonEnabled() {
-        singleSearchView.setButtonEnabled(singleSearchView.getSelectedIndex() != -1);
+    private void setButtonState() {
+        singleSearchView.setPatientButtonEnabled(singleSearchView.getSelectedPatientIndex() != -1);
+    }
+
+    public void handleSelectResearchButtonClick() {
+        int researchId = researchList.get(singleSearchView.getSelectedResearchIndex()).id;
+        List<String> list = Model.getFileContents(Params.get("PATH") + "/research/" + researchId + ".txt");
+        new TotalView().create(list);
     }
 }

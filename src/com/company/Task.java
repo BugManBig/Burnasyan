@@ -70,4 +70,13 @@ public class Task {
         }
         return data;
     }
+
+    public static String[] getFieldNames() {
+        Field[] declaredFields = Task.class.getDeclaredFields();
+        String[] data = new String[declaredFields.length];
+        for (int i = 0; i < declaredFields.length; i++) {
+            data[i] = declaredFields[i].getName();
+        }
+        return data;
+    }
 }
