@@ -5,13 +5,14 @@ import java.util.List;
 
 public class TotalView {
     public void create(List<String> data) {
-        JFrame frame = Params.createFrame(500, 900);
-        for (int i = 0; i < data.size(); i++) {
-            JLabel label = new JLabel(data.get(i));
-            label.setBounds(10, i * 20, 500, 20);
-            label.setFont(Params.FONT);
-            frame.add(label);
-        }
+        JFrame frame = Params.createFrame(500, 500);
+        JList<String> list = new JList<>();
+        String[] strings = data.toArray(new String[0]);
+        list.setListData(strings);
+        JScrollPane scrollPane = new JScrollPane(list);
+        scrollPane.setBounds(10, 10, 450, 450);
+        list.setFont(Params.FONT);
+        frame.add(scrollPane);
 
         JButton closeButton = new JButton("Закрыть");
         closeButton.setBounds(200, 820, 100, 30);

@@ -56,6 +56,14 @@ public class Task {
     public String inaccuracy3;
     public String inaccuracy4;
 
+    public String biohimObshij;
+    public String biohimPryamoj;
+    public String biohimAlt;
+    public String biohimAst;
+    public String biohimGgt;
+    public String biohimSchf;
+    public String biohimSrb;
+
     public String comment;
 
     public List<String> getData() {

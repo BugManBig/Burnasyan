@@ -22,11 +22,11 @@ public class ElastoController {
         task.inaccuracy3 = elastoView.getInaccuracy3();
         task.inaccuracy4 = elastoView.getInaccuracy4();
 
-        CommentView commentView = new CommentView();
-        CommentController commentController = new CommentController();
-        commentView.setCommentController(commentController);
-        commentController.setCommentView(commentView);
-        commentController.start();
+        BiohimView biohimView = new BiohimView();
+        BiohimController biohimController = new BiohimController();
+        biohimView.setBiohimController(biohimController);
+        biohimController.setBiohimView(biohimView);
+        biohimController.start();
 
         elastoView.close();
     }
