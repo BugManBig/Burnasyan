@@ -1,11 +1,6 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Properties;
 
 public class SingleSearchController {
     private SingleSearchView singleSearchView;
@@ -59,5 +54,9 @@ public class SingleSearchController {
         int researchId = researchList.get(singleSearchView.getSelectedResearchIndex()).id;
         List<String> list = Model.getFileContents(Params.get("PATH") + "/research/" + researchId + ".txt");
         new TotalView().create(list);
+    }
+
+    public void handleBackButtonClick() {
+        singleSearchView.close();
     }
 }

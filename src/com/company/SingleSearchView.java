@@ -64,6 +64,11 @@ public class SingleSearchView {
         scrollPane2.setBounds(20, 180, 710, 520);
         frame.add(scrollPane2);
 
+        JButton backButton = new JButton("Закрыть");
+        backButton.setBounds(630, 710, 100, 30);
+        backButton.addActionListener(e -> singleSearchController.handleBackButtonClick());
+        frame.add(backButton);
+
         frame.setVisible(true);
     }
 
@@ -118,5 +123,9 @@ public class SingleSearchView {
 
     public int getSelectedResearchIndex() {
         return researchList.getSelectedIndex();
+    }
+
+    public void close() {
+        frame.dispose();
     }
 }

@@ -29,7 +29,8 @@ public class Task {
     public String vorotnayaComment;
 
     public String arteryVis;
-    public String arterySpeed;
+    public String arteryVps;
+    public String arteryVd;
     public String arteryIr;
 
     public String liverType;

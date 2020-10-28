@@ -10,12 +10,12 @@ public class TotalView {
         String[] strings = data.toArray(new String[0]);
         list.setListData(strings);
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(10, 10, 450, 450);
+        scrollPane.setBounds(10, 10, 450, 400);
         list.setFont(Params.FONT);
         frame.add(scrollPane);
 
         JButton closeButton = new JButton("Закрыть");
-        closeButton.setBounds(200, 820, 100, 30);
+        closeButton.setBounds(350, 420, 100, 30);
         closeButton.addActionListener(e -> frame.dispose());
         frame.add(closeButton);
 

@@ -31,12 +31,6 @@ public class SelezenkaView {
         sizesField = new JTextField();
         sizesField.setBounds(200, 60, 100, 30);
         sizesField.setFont(Params.FONT);
-        sizesField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                selezenkaController.handleKeyReleased();
-            }
-        });
         frame.add(sizesField);
 
         squareField = new JTextField();

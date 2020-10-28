@@ -14,7 +14,8 @@ public class ArteryController {
     public void handleNextButtonClick() {
         Task task = ModelSingleton.getModel().getTask();
         task.arteryVis = arteryView.getComboBox();
-        task.arterySpeed = arteryView.getSpeedField();
+        task.arteryVps = arteryView.getVpsField();
+        task.arteryVd = arteryView.getVdField();
         task.arteryIr = arteryView.getIrField();
 
         LiverVenyView liverVenyView = new LiverVenyView();

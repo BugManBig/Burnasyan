@@ -7,7 +7,8 @@ public class ArteryView {
 
     private JFrame frame;
 
-    private JTextField speedField;
+    private JTextField vpsField;
+    private JTextField vdField;
     private JTextField irField;
     private JComboBox<String> comboBox;
 
@@ -20,21 +21,27 @@ public class ArteryView {
 
         createLabel("Собственная артерия печени", 180, 20);
         createLabel("Визуализируется:", 20, 60);
-        createLabel("Скорость:", 20, 100);
-        createLabel("IR:", 20, 140);
+        createLabel("Vps:", 20, 100);
+        createLabel("Vd:", 20, 140);
+        createLabel("IR:", 20, 180);
 
         comboBox = new JComboBox<>(new String[]{"---", "Да", "Нет"});
         comboBox.setBounds(160, 60, 100, 30);
         comboBox.setFont(Params.FONT);
         frame.add(comboBox);
 
-        speedField = new JTextField();
-        speedField.setBounds(160, 100, 100, 30);
-        speedField.setFont(Params.FONT);
-        frame.add(speedField);
+        vpsField = new JTextField();
+        vpsField.setBounds(160, 100, 100, 30);
+        vpsField.setFont(Params.FONT);
+        frame.add(vpsField);
+
+        vdField = new JTextField();
+        vdField.setBounds(160, 140, 100, 30);
+        vdField.setFont(Params.FONT);
+        frame.add(vdField);
 
         irField = new JTextField();
-        irField.setBounds(160, 140, 100, 30);
+        irField.setBounds(160, 180, 100, 30);
         irField.setFont(Params.FONT);
         frame.add(irField);
 
@@ -50,8 +57,12 @@ public class ArteryView {
         return (String) comboBox.getSelectedItem();
     }
 
-    public String getSpeedField() {
-        return speedField.getText();
+    public String getVpsField() {
+        return vpsField.getText();
+    }
+
+    public String getVdField() {
+        return vdField.getText();
     }
 
     public String getIrField() {
