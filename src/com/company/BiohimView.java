@@ -63,7 +63,7 @@ public class BiohimView {
         createLabel("С-РБ:", 100, 290);
 
         createLabel("5-21", 250, 50);
-        createLabel("0-5", 250, 90);
+        createLabel("0-5.1", 250, 90);
         createLabel("5-33", 250, 130);
         createLabel("5-32", 250, 170);
         createLabel("6-40", 250, 210);
@@ -108,9 +108,9 @@ public class BiohimView {
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                int value;
+                double value;
                 try {
-                    value = Integer.parseInt(textField.getText());
+                    value = Double.parseDouble(textField.getText().replace(',', '.'));
                 } catch (NumberFormatException ignored) {
                     value = from;
                 }

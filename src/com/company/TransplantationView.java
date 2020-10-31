@@ -67,7 +67,6 @@ public class TransplantationView {
         dateField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
                 transplantationController.handleKeyRelease();
             }
         });
@@ -130,6 +129,10 @@ public class TransplantationView {
         } catch (DateTimeParseException e) {
             return null;
         }
+    }
+
+    public void setDate(String date) {
+        dateField.setText(date);
     }
 
     private void createLabel(String text, int x, int y) {

@@ -87,7 +87,6 @@ public class PatientSelectorView {
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
                 patientSelectorController.handleButtonRelease();
             }
         });

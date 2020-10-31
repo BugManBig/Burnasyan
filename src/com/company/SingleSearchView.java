@@ -83,7 +83,6 @@ public class SingleSearchView {
         textField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
                 singleSearchController.handleButtonRelease();
             }
         });

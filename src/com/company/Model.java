@@ -1,14 +1,16 @@
 package com.company;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
-import java.util.*;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Properties;
 
 public class Model {
     private List<Person> patients;
@@ -184,6 +186,21 @@ public class Model {
         }
     }
 
+    public String getTransplantationDate(int patientId) {
+        List<PairIdDate> researchList = getResearchList(patientId);
+        if (researchList.size() == 0) {
+            return null;
+        }
+        int researchId = researchList.get(0).id;
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(Params.get("PATH") + "/Research/" + researchId + ".txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty("transplantationDate");
+    }
+
     public List<PairIdDate> getResearchList(int patientId) {
         List<PairIdDate> list = new ArrayList<>();
         File[] research = new File(Params.get("PATH") + "/Research").listFiles();
@@ -203,19 +220,9 @@ public class Model {
         list.sort(new Comparator<PairIdDate>() {
             @Override
             public int compare(PairIdDate o1, PairIdDate o2) {
-                String[] split = o1.date.split("\\.");
-                int day = Integer.parseInt(split[0]);
-                int month = Integer.parseInt(split[1]);
-                int year = Integer.parseInt(split[2]);
-                int date1 = year * 400 + month * 31 + day;
-
-                split = o2.date.split("\\.");
-                day = Integer.parseInt(split[0]);
-                month = Integer.parseInt(split[1]);
-                year = Integer.parseInt(split[2]);
-                int date2 = year * 400 + month * 31 + day;
-
-                return Integer.compare(date2, date1);
+                LocalDate date1 = LocalDate.parse(o1.date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                LocalDate date2 = LocalDate.parse(o2.date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                return date1.compareTo(date2) * -1;
             }
         });
         return list;

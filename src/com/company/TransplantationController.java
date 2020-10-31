@@ -13,6 +13,11 @@ public class TransplantationController {
     public void start() {
         transplantationView.create();
         handleComboBoxChange();
+        Model model = ModelSingleton.getModel();
+        String transplantationDate = model.getTransplantationDate(model.getTask().patientId);
+        if (transplantationDate != null) {
+            transplantationView.setDate(transplantationDate);
+        }
     }
 
     public void handleKeyRelease() {
