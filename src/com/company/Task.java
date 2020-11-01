@@ -49,12 +49,12 @@ public class Task {
     public String skoplenieComment;
 
     public String elastoQ3;
-    public String elastoQ10;
-    public String elastoPq;
-    public String elastoSQ3;
     public String inaccuracy1;
+    public String elastoQ10;
     public String inaccuracy2;
+    public String elastoPq;
     public String inaccuracy3;
+    public String elastoSQ3;
     public String inaccuracy4;
 
     public String biohimObshij;

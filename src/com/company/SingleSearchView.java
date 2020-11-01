@@ -17,6 +17,7 @@ public class SingleSearchView {
 
     private SingleSearchController singleSearchController;
     private JButton selectPatientButton;
+    private JButton selectResearchButton;
 
     public void setSingleSearchController(SingleSearchController singleSearchController) {
         this.singleSearchController = singleSearchController;
@@ -41,7 +42,7 @@ public class SingleSearchView {
         selectPatientButton.addActionListener(e -> singleSearchController.handleSelectPatientButtonClick());
         frame.add(selectPatientButton);
 
-        JButton selectResearchButton = new JButton("Выбрать");
+        selectResearchButton = new JButton("Выбрать");
         selectResearchButton.setBounds(20, 710, 100, 30);
         selectResearchButton.addActionListener(e -> singleSearchController.handleSelectResearchButtonClick());
         frame.add(selectResearchButton);
@@ -62,6 +63,12 @@ public class SingleSearchView {
         researchList.setFont(Params.FONT);
         JScrollPane scrollPane2 = new JScrollPane(researchList);
         scrollPane2.setBounds(20, 180, 710, 520);
+        researchList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                singleSearchController.handleResearchClick();
+            }
+        });
         frame.add(scrollPane2);
 
         JButton backButton = new JButton("Закрыть");
@@ -74,6 +81,10 @@ public class SingleSearchView {
 
     public void setPatientButtonEnabled(boolean b) {
         selectPatientButton.setEnabled(b);
+    }
+
+    public void setResearchButtonEnabled(boolean b) {
+        selectResearchButton.setEnabled(b);
     }
 
     private JTextField createTextfield(int yOffset) {

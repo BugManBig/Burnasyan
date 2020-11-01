@@ -16,6 +16,7 @@ public class SingleSearchController {
         singleSearchView.create();
         model.readPatients();
         handleButtonRelease();
+        setResearchButtonState();
     }
 
     public void handleButtonRelease() {
@@ -40,20 +41,37 @@ public class SingleSearchController {
             data[i] = researchList.get(i).date;
         }
         singleSearchView.setResearchList(data);
+        setResearchButtonState();
     }
 
     public void handleListClick() {
         setButtonState();
     }
 
+    public void handleResearchClick() {
+        setResearchButtonState();
+    }
+
     private void setButtonState() {
         singleSearchView.setPatientButtonEnabled(singleSearchView.getSelectedPatientIndex() != -1);
+    }
+
+    private void setResearchButtonState() {
+        singleSearchView.setResearchButtonEnabled(singleSearchView.getSelectedResearchIndex() != -1);
     }
 
     public void handleSelectResearchButtonClick() {
         int researchId = researchList.get(singleSearchView.getSelectedResearchIndex()).id;
         List<String> list = Model.getFileContents(Params.get("PATH") + "/research/" + researchId + ".txt");
-        new TotalView().create(list);
+        String[][] data = new String[list.size()][2];
+        for (int i = 0; i < list.size(); i++) {
+            String[] split = list.get(i).split("=");
+            data[i][0] = Params.types[i];
+            if (split.length == 2) {
+                data[i][1] = split[1];
+            }
+        }
+        new TotalView().create(data);
     }
 
     public void handleBackButtonClick() {
