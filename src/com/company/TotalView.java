@@ -19,20 +19,6 @@ public class TotalView {
                 return superRenderer;
             }
         });
-        table.getColumn("Значение").setCellRenderer(new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                Component superRenderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                try {
-                    if (row == 42 && Integer.parseInt(value.toString()) == 3) {
-                        superRenderer.setBackground(new Color(0xFFA1B5));
-                    }
-                } catch (Exception e) {
-
-                }
-                return superRenderer;
-            }
-        });
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 10, 750, 400);
         table.setFont(Params.FONT);

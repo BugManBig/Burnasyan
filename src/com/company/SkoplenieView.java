@@ -52,7 +52,7 @@ public class SkoplenieView {
     }
 
     public String getComment() {
-        return commentArea.getText();
+        return commentArea.getText().replaceAll("\n", "$");
     }
 
     public void close() {
