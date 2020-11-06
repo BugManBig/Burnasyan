@@ -175,7 +175,7 @@ public class TransplantationView {
     }
 
     public String getComment() {
-        return commentArea.getText().replaceAll("\n", "$");
+        return commentArea.getText().replaceAll("\n", "\\$");
     }
 
     public void setFieldsEnabled(boolean b) {

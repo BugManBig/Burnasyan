@@ -60,7 +60,7 @@ public class LiquidView {
     }
 
     public String getComment() {
-        return commentArea.getText().replaceAll("\n", "$");
+        return commentArea.getText().replaceAll("\n", "\\$");
     }
 
     public String getDividing() {
