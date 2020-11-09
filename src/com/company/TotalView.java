@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class TotalView {
     private TotalController totalController;
@@ -30,7 +33,7 @@ public class TotalView {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component superRenderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (row < 41 || row > 47) {
+                if (row < 41 || row > 47 || ((String) value).length() == 0) {
                     superRenderer.setBackground(Color.WHITE);
                     return superRenderer;
                 }
@@ -55,6 +58,8 @@ public class TotalView {
         saveButton.setBounds(10, 420, 100, 30);
         saveButton.addActionListener(e -> totalController.handleSaveButtonClick());
         frame.add(saveButton);
+
+        table.addPropertyChangeListener(evt -> saveButton.setEnabled(!table.isEditing()));
 
         frame.setVisible(true);
     }
