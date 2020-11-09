@@ -19,6 +19,21 @@ public class TotalView {
                 return superRenderer;
             }
         });
+        table.getColumn("Значение").setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component superRenderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (row < 41 || row > 47) {
+                    superRenderer.setBackground(Color.WHITE);
+                    return superRenderer;
+                }
+                String valStr = (String) value;
+                double doubleValue = Double.parseDouble(valStr);
+                superRenderer.setBackground(Params.isInRange(BiohimType.values()[row - 41], doubleValue)
+                        ? Color.WHITE : Params.NOT_IN_RANGE_COLOR);
+                return superRenderer;
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 10, 750, 400);
         table.setFont(Params.FONT);

@@ -4,10 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class Params {
     public static final Font FONT = new Font("Arial", Font.PLAIN, 16);
+
+    public static final Color NOT_IN_RANGE_COLOR = new Color(0xFF7D7D);
 
     public static String[] types = {
             "Доктор",
@@ -60,6 +64,21 @@ public class Params {
             "Биохимия - С-РБ",
             "Комментарий",
     };
+    private static Map<BiohimType, Range> map = new HashMap<>();
+
+    static {
+        map.put(BiohimType.OBSHIJ, new Range(5, 21));
+        map.put(BiohimType.PRYAMOJ, new Range(0, 5.1));
+        map.put(BiohimType.ALT, new Range(5, 33));
+        map.put(BiohimType.AST, new Range(5, 32));
+        map.put(BiohimType.GGT, new Range(6, 40));
+        map.put(BiohimType.SCHF, new Range(30, 120));
+        map.put(BiohimType.SRB, new Range(0, 5));
+    }
+
+    public static Range getRange(BiohimType type) {
+        return map.get(type);
+    }
 
     public static JFrame createFrame(int width, int height) {
         JFrame frame = new JFrame();
@@ -82,5 +101,9 @@ public class Params {
             e.printStackTrace();
         }
         return properties.getProperty(key);
+    }
+
+    public static boolean isInRange(BiohimType type, double value) {
+        return map.get(type).isInRange(value);
     }
 }

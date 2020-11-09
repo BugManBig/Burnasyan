@@ -62,13 +62,13 @@ public class BiohimView {
         createLabel("ЩФ:", 100, 250);
         createLabel("С-РБ:", 100, 290);
 
-        createLabel("5-21", 250, 50);
-        createLabel("0-5.1", 250, 90);
-        createLabel("5-33", 250, 130);
-        createLabel("5-32", 250, 170);
-        createLabel("6-40", 250, 210);
-        createLabel("30-120", 250, 250);
-        createLabel("0-5", 250, 290);
+        createLabel(Params.getRange(BiohimType.OBSHIJ).toString(), 250, 50);
+        createLabel(Params.getRange(BiohimType.PRYAMOJ).toString(), 250, 90);
+        createLabel(Params.getRange(BiohimType.ALT).toString(), 250, 130);
+        createLabel(Params.getRange(BiohimType.AST).toString(), 250, 170);
+        createLabel(Params.getRange(BiohimType.GGT).toString(), 250, 210);
+        createLabel(Params.getRange(BiohimType.SCHF).toString(), 250, 250);
+        createLabel(Params.getRange(BiohimType.SRB).toString(), 250, 290);
 
         createLabel("(мкмоль/л)", 310, 50);
         createLabel("(мкмоль/л)", 310, 90);
@@ -78,13 +78,13 @@ public class BiohimView {
         createLabel("(Е/л)", 310, 250);
         createLabel("(мг/л)", 310, 290);
 
-        obshijField = createTextfield(50, 5, 21);
-        pryamojTextfield = createTextfield(90, 0, 5);
-        altField = createTextfield(130, 5, 33);
-        astField = createTextfield(170, 5, 32);
-        ggtField = createTextfield(210, 6, 40);
-        schfField = createTextfield(250, 30, 120);
-        srbField = createTextfield(290, 0, 5);
+        obshijField = createTextfield(50, BiohimType.OBSHIJ);
+        pryamojTextfield = createTextfield(90, BiohimType.PRYAMOJ);
+        altField = createTextfield(130, BiohimType.ALT);
+        astField = createTextfield(170, BiohimType.AST);
+        ggtField = createTextfield(210, BiohimType.GGT);
+        schfField = createTextfield(250, BiohimType.SCHF);
+        srbField = createTextfield(290, BiohimType.SRB);
 
         JButton nextButton = new JButton("Далее");
         nextButton.setBounds(450, 300, 100, 30);
@@ -101,7 +101,7 @@ public class BiohimView {
         frame.add(label);
     }
 
-    private JTextField createTextfield(int yOffset, int from, int to) {
+    private JTextField createTextfield(int yOffset, BiohimType type) {
         JTextField textField = new JTextField();
         textField.setBounds(180, yOffset, 60, 30);
         textField.setFont(Params.FONT);
@@ -112,9 +112,15 @@ public class BiohimView {
                 try {
                     value = Double.parseDouble(textField.getText().replace(',', '.'));
                 } catch (NumberFormatException ignored) {
-                    value = from;
+                    textField.setBackground(Color.WHITE);
+                    return;
                 }
-                textField.setBackground(value < from || value > to ? new Color(0xFF9D8F) : Color.WHITE);
+                Range range = Params.getRange(type);
+                if (value < range.getFrom() || value > range.getTo()) {
+                    textField.setBackground(Params.NOT_IN_RANGE_COLOR);
+                } else {
+                    textField.setBackground(Color.WHITE);
+                }
             }
         });
         frame.add(textField);
