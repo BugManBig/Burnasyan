@@ -64,7 +64,7 @@ public class Params {
             "Биохимия - С-РБ",
             "Комментарий",
     };
-    private static Map<BiohimType, Range> map = new HashMap<>();
+    private static final Map<BiohimType, Range> map = new HashMap<>();
 
     static {
         map.put(BiohimType.OBSHIJ, new Range(5, 21));

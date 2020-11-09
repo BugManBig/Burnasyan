@@ -68,7 +68,15 @@ public class SingleSearchController {
             String[] split = list.get(i).split("=");
             data[i][0] = Params.types[i];
             if (split.length == 2) {
-                data[i][1] = split[1];
+                if (i == 0) {
+                    model.readDoctors();
+                    data[i][1] = model.getDoctor(Integer.parseInt(split[1])).getFio();
+                } else if (i == 1) {
+                    model.readPatients();
+                    data[i][1] = model.getPatient(Integer.parseInt(split[1])).getFio();
+                } else {
+                    data[i][1] = split[1];
+                }
             }
         }
         new TotalView().create(data);
