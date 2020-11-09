@@ -45,5 +45,6 @@ public class TotalController {
             data[i][1] = totalView.getTableValue(i);
         }
         model.updateResearch(data, researchId);
+        totalView.close();
     }
 }

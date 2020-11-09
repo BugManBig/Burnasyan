@@ -11,13 +11,14 @@ import java.beans.PropertyChangeListener;
 public class TotalView {
     private TotalController totalController;
     private JTable table;
+    private JFrame frame;
 
     public void setTotalController(TotalController totalController) {
         this.totalController = totalController;
     }
 
     public void create(String[][] data) {
-        JFrame frame = Params.createFrame(800, 500);
+        frame = Params.createFrame(800, 500);
         table = new JTable();
         DefaultTableModel dataModel = new DefaultTableModel(data, new String[]{"Тип", "Значение"});
         table.setModel(dataModel);
@@ -66,5 +67,9 @@ public class TotalView {
 
     public String getTableValue(int row) {
         return (String) table.getValueAt(row, 1);
+    }
+
+    public void close() {
+        frame.dispose();
     }
 }
