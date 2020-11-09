@@ -186,6 +186,19 @@ public class Model {
         }
     }
 
+    public void updateResearch(String[][] data, int researchId) {
+        List<String> list = new ArrayList<>();
+        for (String[] element : data) {
+            list.add(element[0] + "=" + element[1]);
+        }
+        try {
+            Files.write(new File(Params.get("PATH") + "/Research/" + researchId + ".txt").toPath(),
+                    list, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getTransplantationDate(int patientId) {
         List<PairIdDate> researchList = getResearchList(patientId);
         if (researchList.size() == 0) {

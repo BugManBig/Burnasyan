@@ -62,24 +62,11 @@ public class SingleSearchController {
 
     public void handleSelectResearchButtonClick() {
         int researchId = researchList.get(singleSearchView.getSelectedResearchIndex()).id;
-        List<String> list = Model.getFileContents(Params.get("PATH") + "/research/" + researchId + ".txt");
-        String[][] data = new String[list.size()][2];
-        for (int i = 0; i < list.size(); i++) {
-            String[] split = list.get(i).split("=");
-            data[i][0] = Params.types[i];
-            if (split.length == 2) {
-                if (i == 0) {
-                    model.readDoctors();
-                    data[i][1] = model.getDoctor(Integer.parseInt(split[1])).getFio();
-                } else if (i == 1) {
-                    model.readPatients();
-                    data[i][1] = model.getPatient(Integer.parseInt(split[1])).getFio();
-                } else {
-                    data[i][1] = split[1];
-                }
-            }
-        }
-        new TotalView().create(data);
+        TotalView totalView = new TotalView();
+        TotalController totalController = new TotalController();
+        totalView.setTotalController(totalController);
+        totalController.setTotalView(totalView);
+        totalController.start(researchId);
     }
 
     public void handleBackButtonClick() {

@@ -6,9 +6,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class TotalView {
+    private TotalController totalController;
+    private JTable table;
+
+    public void setTotalController(TotalController totalController) {
+        this.totalController = totalController;
+    }
+
     public void create(String[][] data) {
         JFrame frame = Params.createFrame(800, 500);
-        JTable table = new JTable();
+        table = new JTable();
         DefaultTableModel dataModel = new DefaultTableModel(data, new String[]{"Тип", "Значение"});
         table.setModel(dataModel);
         table.getColumn("Тип").setCellRenderer(new DefaultTableCellRenderer() {
@@ -44,6 +51,15 @@ public class TotalView {
         closeButton.addActionListener(e -> frame.dispose());
         frame.add(closeButton);
 
+        JButton saveButton = new JButton("Сохранить");
+        saveButton.setBounds(10, 420, 100, 30);
+        saveButton.addActionListener(e -> totalController.handleSaveButtonClick());
+        frame.add(saveButton);
+
         frame.setVisible(true);
+    }
+
+    public String getTableValue(int row) {
+        return (String) table.getValueAt(row, 1);
     }
 }
