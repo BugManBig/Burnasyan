@@ -34,7 +34,7 @@ public class TotalView {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component superRenderer = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (row < 41 || row > 47 || ((String) value).length() == 0) {
+                if (row < 42 || row > 48 || ((String) value).length() == 0) {
                     superRenderer.setBackground(Color.WHITE);
                     return superRenderer;
                 }

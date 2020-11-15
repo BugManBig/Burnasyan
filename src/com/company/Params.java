@@ -55,6 +55,7 @@ public class Params {
             "Эластометрия - погрешность ElastPQ",
             "Эластометрия - Селезёнка, 3mm",
             "Эластометрия - погрешность Селезёнка, 3mm",
+            "Шкала METAVIR",
             "Биохимия - билирубин общий",
             "Биохимия - билирубин прямой",
             "Биохимия - АЛТ",
@@ -81,7 +82,7 @@ public class Params {
     }
 
     public static JFrame createFrame(int width, int height) {
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Трансплантация");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(width, height);
         frame.setLocationRelativeTo(null);

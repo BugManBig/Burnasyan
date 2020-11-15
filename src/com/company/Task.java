@@ -56,6 +56,7 @@ public class Task {
     public String inaccuracy3;
     public String elastoSQ3;
     public String inaccuracy4;
+    public String elastoMetavir;
 
     public String biohimObshij;
     public String biohimPryamoj;
