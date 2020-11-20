@@ -26,19 +26,24 @@ public class ElastoController {
         set.add(metavir10);
         boolean wasAdded = set.add(metavirPq);
         String resultMetavir = wasAdded ? metavir3 : metavirPq;
-        if (resultMetavir.length() == 0) {
+        if (resultMetavir.isEmpty()) {
             return;
         }
-        if (resultMetavir.length() > 2) {
-            elastoView.setSelectedMetavir(0);
+
+        if (metavirPq.isEmpty()) {
+            int n1 = Integer.parseInt(metavir3.substring(metavir3.length() - 1));
+            int n2 = Integer.parseInt(metavir10.substring(metavir10.length() - 1));
+            int shift = metavir3.equals(metavir10) ? -1 : 3;
+            int id = (n1 + n2) / 2 + shift;
+            elastoView.setSelectedMetavir(id);
         } else {
-            int id = Integer.parseInt(resultMetavir.substring(1));
+            int id = Integer.parseInt(resultMetavir.substring(resultMetavir.length() - 1));
             elastoView.setSelectedMetavir(id - 1);
         }
     }
 
     private String getMetavir(String input) {
-        if (input.length() > 0) {
+        if (!input.isEmpty()) {
             double elast;
             try {
                 elast = Double.parseDouble(input.replace(',', '.'));
