@@ -56,11 +56,11 @@ public class ElastoController {
     }
 
     private String getMetavirByValue(double value) {
-        if (value <= 7.1) {
+        if (value <= 6.31) {
             return "F0-F1";
-        } else if (value > 7.1 && value <= 8.7) {
+        } else if (value > 6.31 && value <= 10.28) {
             return "F2";
-        } else if (value > 8.7 && value <= 10.4) {
+        } else if (value > 10.28 && value <= 11.03) {
             return "F3";
         }
         return "F4";
