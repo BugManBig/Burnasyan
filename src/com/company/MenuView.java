@@ -23,6 +23,11 @@ public class MenuView {
         searchButton.addActionListener(e -> menuController.handleSearchButtonClick());
         frame.add(searchButton);
 
+        JButton exportButton = new JButton("Экспорт");
+        exportButton.setBounds(50, 110, 180, 30);
+        exportButton.addActionListener(e -> menuController.handleExportButtonClick());
+        frame.add(exportButton);
+
         frame.setVisible(true);
     }
 

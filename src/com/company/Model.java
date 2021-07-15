@@ -240,4 +240,23 @@ public class Model {
         });
         return list;
     }
+
+    private Properties getPropertiesFromResearch(File file) {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(file));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+
+    public List<Properties> getPropertiesListFromResearches() {
+        File[] research = new File(Params.get("PATH") + "/Research").listFiles();
+        List<Properties> propertiesList = new ArrayList<>();
+        for (File file : research) {
+            propertiesList.add(getPropertiesFromResearch(file));
+        }
+        return propertiesList;
+    }
 }
