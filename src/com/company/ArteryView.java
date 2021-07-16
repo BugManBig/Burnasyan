@@ -24,6 +24,8 @@ public class ArteryView {
         createLabel("Vps:", 20, 100);
         createLabel("Vd:", 20, 140);
         createLabel("IR:", 20, 180);
+        createLabel("см/с", 270, 100);
+        createLabel("см/с", 270, 140);
 
         comboBox = new JComboBox<>(new String[]{"---", "Да", "Нет"});
         comboBox.setBounds(160, 60, 100, 30);

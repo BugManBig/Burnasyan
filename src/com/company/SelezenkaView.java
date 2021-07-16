@@ -27,6 +27,10 @@ public class SelezenkaView {
         createLabel("вены в воротах:", 20, 160);
         createLabel("Скорость в воротах", 20, 200);
         createLabel("селезёнки:", 20, 220);
+        createLabel("мм", 310, 60);
+        createLabel("см^2", 310, 100);
+        createLabel("мм", 310, 160);
+        createLabel("см/c", 310, 220);
 
         sizesField = new JTextField();
         sizesField.setBounds(200, 60, 100, 30);

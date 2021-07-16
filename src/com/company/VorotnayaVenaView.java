@@ -27,7 +27,11 @@ public class VorotnayaVenaView {
         createLabel("Скорость:", 120, 190);
         createLabel("До анастомоза:", 20, 230);
         createLabel("После анастомоза:", 20, 270);
-        createLabel("Комментарий:", 300, 60);
+        createLabel("Комментарий:", 310, 60);
+        createLabel("мм", 280, 100);
+        createLabel("мм", 280, 140);
+        createLabel("см/с", 280, 230);
+        createLabel("см/с", 280, 270);
 
         sizeBeforeField = new JTextField();
         sizeBeforeField.setBounds(170, 100, 100, 30);
@@ -50,7 +54,7 @@ public class VorotnayaVenaView {
         frame.add(speedAfterField);
 
         commentArea = new JTextArea();
-        commentArea.setBounds(300, 100, 200, 100);
+        commentArea.setBounds(310, 100, 200, 100);
         commentArea.setFont(Params.FONT);
         commentArea.setLineWrap(true);
         commentArea.setWrapStyleWord(true);

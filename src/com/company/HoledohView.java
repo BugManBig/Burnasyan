@@ -19,6 +19,7 @@ public class HoledohView {
         createLabel("Холедох", 250, 20);
         createLabel("Визуализируется:", 20, 60);
         createLabel("Размеры:", 20, 100);
+        createLabel("мм", 290, 100);
 
         comboBox = new JComboBox<>(new String[]{"---", "Да", "Нет"});
         comboBox.setBounds(160, 60, 120, 30);

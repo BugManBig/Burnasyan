@@ -35,6 +35,9 @@ public class TransplantationView {
         createLabel("ПД:", 170, 150);
         createLabel("Размеры", 20, 150);
         createLabel("трансплантата:", 20, 170);
+        createLabel("мм", 330, 150);
+        createLabel("мм", 330, 190);
+        createLabel("мм", 330, 230);
         ldLabel = new JLabel("ЛД:");
         ldLabel.setBounds(170, 190, 30, 30);
         ldLabel.setFont(Params.FONT);

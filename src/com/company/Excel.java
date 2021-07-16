@@ -34,6 +34,13 @@ public class Excel {
             sheet.autoSizeColumn(i);
         }
 
+        //trans - mm
+        //holedoh - mm
+        //vorotnaya - mm, speed - sm/s
+        //sobst art - sm/s (1, 2)
+        //pechenochnye - sm/s
+        //selez - mm, sm^2, mm, sm/s
+        //
         try {
             book.write(new FileOutputStream(path));
             book.close();

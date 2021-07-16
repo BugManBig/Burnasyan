@@ -19,6 +19,7 @@ public class LiverVenyView {
         createLabel("Печёночные вены", 200, 20);
         createLabel("Тип кровотока:", 20, 60);
         createLabel("Скорость:", 20, 100);
+        createLabel("см/с", 270, 100);
 
         comboBox = new JComboBox<>(new String[]{"HV0", "HV1", "HV2"});
         comboBox.setBounds(160, 60, 100, 30);
